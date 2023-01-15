@@ -1,3 +1,98 @@
 /* styles.css */
 
 /* Add styles here to customize the appearance of your app */
+
+#left,
+#right {
+  background-color: #e8e8e8;
+  float: left;
+  height: 100%;
+  width: 50%;
+  /* padding-left: 20px; */
+  /* padding-right: 100px; */
+  /* padding-top: 149px; */
+  /* position: relative;  */
+}
+
+#tabFrame input[name="tabRadio"],
+#tabContent [class^="tabContent_"] {
+  display: none;
+}
+
+#tab_1:checked ~ #tabContent .tabContent_1,
+#tab_2:checked ~ #tabContent .tabContent_2 {
+  display: block;
+}
+
+#tab_1:checked ~ .tabTitle #tabTitle_1,
+#tab_2:checked ~ .tabTitle #tabTitle_2 {
+  background: #dbdbdb;
+}
+
+.tabTitle label {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background: #b1b1b1;
+  float: left;
+
+  line-height: 40px;
+  width: 70px;
+  height: 40px;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.tabTitle label:hover {
+  background: #e8e8e8;
+}
+
+.marginTopSmall {
+  margin-top: 10px;
+}
+
+.marginTopMid {
+  margin-top: 20px;
+}
+
+.marginTopLarge {
+  margin-top: 30px;
+}
+
+.marginLeftSmall {
+  margin-left: 20px;
+}
+
+.marginLeftMid {
+  margin-left: 40px;
+}
+
+.marginLeftLarge {
+  margin-left: 60px;
+}
+
+.marginRightSmall {
+  margin-right: 10px;
+}
+
+.marginRightMid {
+  margin-right: 20px;
+}
+
+.marginRightLarge {
+  margin-right: 30px;
+}
+
+/* 三角形 */
+.tri {
+  width: 0px;
+  height: 0px;
+  /* background-color: #FF0000; */
+  background-color: transparent;
+  border: 20px solid rgb(70, 111, 39);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  cursor: pointer;
+}

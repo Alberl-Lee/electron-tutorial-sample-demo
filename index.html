@@ -1,18 +1,123 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="./styles.css" rel="stylesheet">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'" /> -->
+    <link href="./styles.css" rel="stylesheet" />
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <div id="left">
+      <h3>Hello World!</h3>
+      <p>这是<i>一个段落 </i></p>
+      这是一个换行<br />
+      <div>
+        <a href="https://www.electronjs.org/">这是一个链接</a>
+      </div>
+      <div>
+        <img src="assets/electron.png" height="60" />
+        <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+          <path
+            fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+          ></path>
+        </svg>
+        <svg width="50" height="50">
+          <circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="#0075FF" />
+          抱歉，您的浏览器不支持嵌入式 SVG。
+        </svg>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;radio : </label>
+        <input type="radio" name="tabRadioTest" checked="checked" />
+        <input type="radio" name="tabRadioTest" />
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;checkbox : </label>
+        <input type="checkbox" checked="checked" />
+        <input type="checkbox" />
+      </div>
+      <div>
+        <div class="marginTopSmall">
+          <input type="number" step="1" min="0" max="93" value="0" style="width: 50px" />
+          <input type="text" value="Mouse" />
+          <label>&nbsp;&nbsp;droplist:</label>
+          <select>
+            <option value="1">111</option>
+            <option value="2">222</option>
+            <option value="3">333</option>
+          </select>
+        </div>
+        <div class="marginTopSmall">
+          <div>
+            <button>button</button>
+            <button style="width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer; background-color: #0075ff">Circle按钮</button>
+            <button class="tri marginLeftSmall">tri</button>
 
+            <div class="marginTopSmall">
+              <form oninput="sliderRadiusText.value=parseInt(sliderRadius.value)">
+                <label>slider:</label>
+                <input id="sliderRadius" type="range" min="0" max="1000" step="10" value="150" />
+                <output id="sliderRadiusText" class="outputClear">150</output>
+              </form>
+              progress:
+              <progress value="22" max="100"></progress>
+            </div>
+          </div>
+        </div>
+        <div id="tabFrame" class="marginTopLarge" style="background-color: #efefef; width: 300px; height: 150px">
+          <input type="radio" name="tabRadio" id="tab_1" checked="checked" />
+          <input type="radio" name="tabRadio" id="tab_2" />
+          <div class="tabTitle textCenter" style="padding: 0px 30px">
+            <label for="tab_1" id="tabTitle_1">Tab1</label>
+            <label for="tab_2" id="tabTitle_2" style="margin: 0px 10px">Tab2</label>
+          </div>
+
+          <div id="tabContent" style="padding: 80px 30px">
+            <div class="tabContent_1">
+              <label>tab_1</label>
+            </div>
+            <div class="tabContent_2">
+              <label>tab_2</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- <button id="distort_btnDel" onclick="distort_btnDel()">删除</button> -->
+      </div>
+
+      <table>
+        <colgroup>
+          <col span="2" style="background-color: #0075ff" />
+          <col style="background-color: gray" />
+        </colgroup>
+        <tr>
+          <th>Grid1</th>
+          <th>Grid2</th>
+          <th>Grid3</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>hello world</td>
+          <td>2</td>
+        </tr>
+      </table>
+      <textarea rows="7" cols="30">
+        我是一个
+        多行文本框。
+        </textarea
+      >
+    </div>
+    <div id="right">
+      <audio controls>
+        <source src="assets\music.mp3" type="audio/mpeg" />
+        您的浏览器不支持 audio 元素。
+      </audio>
+      <video width="320" height="240" controls>
+        <source src="assets\movie.ogg" type="video/ogg" />
+        您的浏览器不支持 HTML5 video 标签。
+      </video>
+      <div class="marginTopLarge">
+        <webview src="https://www.electronjs.org/" style="display: inline-flex; width: 580px; height: 350px"></webview>
+      </div>
+    </div>
     <script src="./renderer.js"></script>
   </body>
 </html>
