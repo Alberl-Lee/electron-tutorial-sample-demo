@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "css-build": "node-sass --omit-source-map-url _sass/main.scss css/main.css",
+    "css-watch": "npm run css-build -- --watch",
+    "electron": "electron .",
+    "start": "npm-run-all --parallel css-watch electron"
   },
   "devDependencies": {
-    "electron": "^22.0.2"
+    "electron": "^22.0.2",
+    "bulma": "^0.9.4",
+    "node-sass": "^8.0.0"
   }
 }

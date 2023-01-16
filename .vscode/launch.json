@@ -1,4 +1,11 @@
 {
+  "compounds": [
+    {
+      "name": "Electron: All",
+      "configurations": ["Debug Main Process", "Debug Renderer Process"],
+      "stopAll": true
+    }
+  ],
   "configurations": [
     {
       "name": "Debug Main Process",
@@ -18,13 +25,6 @@
       "request": "attach",
       "port": 9223,
       "webRoot": "${workspaceFolder}"
-    }
-  ],
-  "compounds": [
-    {
-      "name": "Electron: All",
-      "configurations": ["Debug Main Process", "Debug Renderer Process"],
-      "stopAll": true
     }
   ]
 }

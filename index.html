@@ -2,21 +2,24 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'" /> -->
-    <link href="./styles.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" /> -->
+
     <title>Hello World!</title>
   </head>
   <body>
-    <div id="left">
-      <h3>Hello World!</h3>
-      <p>这是<i>一个段落 </i></p>
-      这是一个换行<br />
-      <div>
-        <a href="https://www.electronjs.org/">这是一个链接</a>
+    <section class="section is-4">
+      <div class="container">
+        <h1 class="subtitle">Hello World!</h1>
+        这是一个换行 <a href="https://www.electronjs.org/">这是一个链接</a>
       </div>
+    </section>
+    <div id="left">
       <div>
-        <img src="assets/electron.png" height="60" />
+        <img src="assets/electron.png" height="30" />
         <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
           <path
             fill-rule="evenodd"
@@ -24,9 +27,10 @@
           ></path>
         </svg>
         <svg width="50" height="50">
-          <circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="#0075FF" />
+          <circle cx="25" cy="25" r="20" stroke="black" stroke-width="1" fill="hsl(204, 86%, 53%)" />
           抱歉，您的浏览器不支持嵌入式 SVG。
         </svg>
+        <span class="bulma-arrow-mixin"></span>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;radio : </label>
         <input type="radio" name="tabRadioTest" checked="checked" />
         <input type="radio" name="tabRadioTest" />
@@ -37,7 +41,7 @@
       <div>
         <div class="marginTopSmall">
           <input type="number" step="1" min="0" max="93" value="0" style="width: 50px" />
-          <input type="text" value="Mouse" />
+          <input type="text" value="Edit" />
           <label>&nbsp;&nbsp;droplist:</label>
           <select>
             <option value="1">111</option>
@@ -48,8 +52,13 @@
         <div class="marginTopSmall">
           <div>
             <button>button</button>
-            <button style="width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer; background-color: #0075ff">Circle按钮</button>
+            <button class="button is-small">bluma</button>
+            <button class="button is-primary">color btn</button>
+            <button class="button is-primary is-outlined">outlined</button>
+            <button class="button is-info is-loading">Button</button>
+            <button class="button" style="width: 60px; height: 60px; border-radius: 50%; background-color: hsl(141, 53%, 53%)">circle<br />按钮</button>
             <button class="tri marginLeftSmall">tri</button>
+            <button class="bulma-delete-mixin"></button>
 
             <div class="marginTopSmall">
               <form oninput="sliderRadiusText.value=parseInt(sliderRadius.value)">
