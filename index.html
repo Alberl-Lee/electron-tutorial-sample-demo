@@ -5,21 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'" /> -->
-    <link href="css/main.css" rel="stylesheet" />
+    <!-- 不要引入jquery-ui.css 否则主题跟bulma不搭调 -->
+    <link rel="stylesheet" type="text/css" href="thirdparty/jquery-ui/jquery-ui.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" />
+    <link href="css/main.css" rel="stylesheet" />
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script> -->
+    <script src="thirdparty/jquery/jquery.js"></script>
+    <script src="thirdparty/jquery-ui/jquery-ui.js"></script>
 
     <title>Hello World!</title>
   </head>
-  <body>
-    <section class="section is-4">
-      <div class="container">
+  <body oncontextmenu="showMenu(event)">
+    <section class="section is-max-desktop">
+      <div>
         <h1 class="subtitle">Hello World!</h1>
         这是一个换行 <a href="https://www.electronjs.org/">这是一个链接</a>
       </div>
     </section>
+
     <div id="left">
-      <div>
-        <img src="assets/electron.png" height="30" />
+      <div class="block">
+        <img height="64" width="64" src="assets/electron.png" />
+        <span>SVG:</span>
         <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
           <path
             fill-rule="evenodd"
@@ -30,7 +39,7 @@
           <circle cx="25" cy="25" r="20" stroke="black" stroke-width="1" fill="hsl(204, 86%, 53%)" />
           抱歉，您的浏览器不支持嵌入式 SVG。
         </svg>
-        <span class="bulma-arrow-mixin"></span>
+        <span class="bulma-arrow-mixin bulma-center-mixin"></span>
         <label>&nbsp;&nbsp;&nbsp;&nbsp;radio : </label>
         <input type="radio" name="tabRadioTest" checked="checked" />
         <input type="radio" name="tabRadioTest" />
@@ -38,40 +47,204 @@
         <input type="checkbox" checked="checked" />
         <input type="checkbox" />
       </div>
-      <div>
-        <div class="marginTopSmall">
+
+      <div class="block">
+        <button>button</button>
+        <button class="button is-small">bluma</button>
+        <button class="button">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+          <span>GitHub</span>
+        </button>
+        <button class="button">
+          <span class="icon is-small">
+            <i class="fas fa-underline"></i>
+          </span>
+        </button>
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+          <span>Home</span>
+        </span>
+        <button class="button is-primary">color btn</button>
+        <button class="button is-primary is-outlined">outlined</button>
+        <button class="button is-text">Text</button>
+        <button class="button is-ghost">Ghost</button>
+
+        <button class="button is-info is-loading">Button</button>
+        <button class="button is-success is-rounded">Rounded</button>
+
+        <button class="button" style="width: 60px; height: 60px; border-radius: 50%; background-color: hsl(141, 53%, 53%)">circle<br />按钮</button>
+        <button class="tri marginLeftSmall">tri</button>
+        <button class="bulma-delete-mixin"></button>
+        <button class="delete is-medium"></button>
+
+        <span class="tag is-warning">Warning</span>
+        <span class="tag is-danger">Danger</span>
+        <span class="tag is-success">
+          Success
+          <button class="delete is-small"></button>
+        </span>
+        <span class="tags has-addons marginTopSmall">
+          <span class="tag is-success">Success</span>
+          <a class="tag is-delete" href="#btnDropdown"></a>
+        </span>
+
+        <button data-target="modal-js-example" class="button is-danger js-modal-trigger">trigger Modal</button>
+        <div id="modal-js-example" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+              <p>Modal JS example</p>
+              <!-- Your content -->
+            </div>
+          </div>
+          <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+      </div>
+      <div class="box block">
+        <form oninput="sliderRadiusText.value=parseInt(sliderRadius.value)">
+          <label>slider:</label>
+          <input id="sliderRadius" type="range" min="0" max="1000" step="10" value="150" />
+          <output id="sliderRadiusText" class="outputClear">150</output>
+        </form>
+        progress:
+        <progress class="progress is-success" value="22" max="100"></progress>
+        <div class="block">
           <input type="number" step="1" min="0" max="93" value="0" style="width: 50px" />
           <input type="text" value="Edit" />
-          <label>&nbsp;&nbsp;droplist:</label>
+          <div class="panel-block">
+            <p class="control has-icons-left">
+              <input class="input is-primary" type="text" placeholder="Search" />
+              <span class="icon is-left">
+                <i class="fas fa-search cursor-pointer" aria-hidden="true"></i>
+              </span>
+            </p>
+          </div>
+          <label>&nbsp;&nbsp;droplist :</label>
           <select>
             <option value="1">111</option>
             <option value="2">222</option>
             <option value="3">333</option>
           </select>
-        </div>
-        <div class="marginTopSmall">
-          <div>
-            <button>button</button>
-            <button class="button is-small">bluma</button>
-            <button class="button is-primary">color btn</button>
-            <button class="button is-primary is-outlined">outlined</button>
-            <button class="button is-info is-loading">Button</button>
-            <button class="button" style="width: 60px; height: 60px; border-radius: 50%; background-color: hsl(141, 53%, 53%)">circle<br />按钮</button>
-            <button class="tri marginLeftSmall">tri</button>
-            <button class="bulma-delete-mixin"></button>
+          <!-- is-hoverable  is-active-->
+          <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button id="btnDropdown" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>DropList</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div id="dropdown-menu" class="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item"> Dropdown item </a>
+                <a class="dropdown-item"> Other dropdown item </a>
+                <a href="#" class="dropdown-item is-active"> Active dropdown item </a>
+                <a href="#" class="dropdown-item"> Other dropdown item </a>
+                <hr class="dropdown-divider" />
+                <a href="#" class="dropdown-item"> With a divider </a>
+              </div>
+            </div>
+          </div>
 
-            <div class="marginTopSmall">
-              <form oninput="sliderRadiusText.value=parseInt(sliderRadius.value)">
-                <label>slider:</label>
-                <input id="sliderRadius" type="range" min="0" max="1000" step="10" value="150" />
-                <output id="sliderRadiusText" class="outputClear">150</output>
-              </form>
-              progress:
-              <progress value="22" max="100"></progress>
+          <div id="global-menu" class="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item"> Dropdown item </a>
+              <a class="dropdown-item"> Other dropdown item </a>
+              <a href="#" class="dropdown-item is-active"> Active dropdown item </a>
+              <a href="#" class="dropdown-item"> Other dropdown item </a>
+              <hr class="dropdown-divider" />
+              <a href="#" class="dropdown-item"> With a divider </a>
             </div>
           </div>
         </div>
-        <div id="tabFrame" class="marginTopLarge" style="background-color: #efefef; width: 300px; height: 150px">
+      </div>
+      <div class="card block">
+        <header class="card-header">
+          <p class="card-header-title">Component</p>
+          <button class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            this is a card <br />
+            has button
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Save</a>
+          <a href="#" class="card-footer-item">Edit</a>
+          <a href="#" class="card-footer-item">Delete</a>
+        </footer>
+      </div>
+
+      <article class="panel is-primary block">
+        <p class="panel-heading block">Tabs</p>
+
+        <div id="tabsJQueryUI" class="is-centered is-boxed block">
+          <ul>
+            <li>
+              <a href="#tabs-1">
+                <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+                <span>Music</span>
+              </a>
+            </li>
+            <li>
+              <a href="#tabs-2">
+                <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                <span>Videos</span>
+              </a>
+            </li>
+          </ul>
+
+          <div id="tabs-1">Music Content</div>
+          <div id="tabs-2">Videos Content</div>
+        </div>
+
+        <div class="tabs is-centered is-boxed">
+          <ul>
+            <li>
+              <a>
+                <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+                <span>Music</span>
+              </a>
+            </li>
+            <li class="is-active">
+              <a>
+                <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                <span>Videos</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="block">
+          <div class="tab-content">Music Content</div>
+          <div class="tab-content is-block">Videos Content</div>
+        </div>
+
+        <div class="tabs block">
+          <ul>
+            <li><a>Music</a></li>
+            <li class="is-active"><a>Videos</a></li>
+            <li><a>Documents</a></li>
+            <li><a>Pictures</a></li>
+          </ul>
+        </div>
+        <div class="block">
+          <div class="tab-content">Music Content</div>
+          <div class="tab-content is-block">Videos Content</div>
+          <div class="tab-content">Documents Content</div>
+          <div class="tab-content">Pictures Content</div>
+        </div>
+
+        <div id="tabFrame" class="block" style="background-color: #efefef; width: 300px; height: 150px">
           <input type="radio" name="tabRadio" id="tab_1" checked="checked" />
           <input type="radio" name="tabRadio" id="tab_2" />
           <div class="tabTitle textCenter" style="padding: 0px 30px">
@@ -88,11 +261,24 @@
             </div>
           </div>
         </div>
+        <a class="panel-block is-active">
+          <span class="panel-icon">
+            <i class="fas fa-book" aria-hidden="true"></i>
+          </span>
+          bulma
+        </a>
+        <a class="panel-block">
+          <span class="panel-icon">
+            <i class="fas fa-book" aria-hidden="true"></i>
+          </span>
+          marksheet
+        </a>
+        <a class="panel-block"> github </a>
+      </article>
 
-        <!-- <button id="distort_btnDel" onclick="distort_btnDel()">删除</button> -->
-      </div>
+      <!-- <button id="distort_btnDel" onclick="distort_btnDel()">删除</button> -->
 
-      <table>
+      <table class="table is-bordered">
         <colgroup>
           <col span="2" style="background-color: #0075ff" />
           <col style="background-color: gray" />
@@ -113,6 +299,36 @@
         多行文本框。
         </textarea
       >
+      <div class="box">
+        <div class="columns">
+          <div class="column">
+            <p class="notification is-primary">First column</p>
+          </div>
+          <div class="column">
+            <p class="notification is-primary">Second column</p>
+          </div>
+          <div class="column">
+            <p class="notification is-primary">Third column</p>
+          </div>
+          <div class="column">
+            <p class="notification is-primary">Fourth column</p>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth">
+            <p class="notification is-primary">1/5 width</p>
+          </div>
+          <div class="column is-2">
+            <p class="notification is-primary">2/12 width</p>
+          </div>
+          <div class="column">
+            <p class="notification">Auto width</p>
+          </div>
+          <div class="column">
+            <p class="notification">Auto width</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="right">
       <audio controls>

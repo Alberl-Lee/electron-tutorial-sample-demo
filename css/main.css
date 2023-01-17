@@ -7897,9 +7897,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
 
-html {
-  background-color: #485fc7; }
-
 .bulma-arrow-mixin {
   border: 3px solid black;
   border-radius: 2px;
@@ -7983,6 +7980,15 @@ html {
     min-width: 32px;
     width: 32px; }
 
+.bulma-center-mixin {
+  position: absolute;
+  left: calc(50% - (30 * 0.5));
+  top: calc(50% - (30 * 0.5)); }
+
+.cursor-pointer {
+  cursor: pointer;
+  pointer-events: auto; }
+
 #left,
 #right {
   background-color: #e8e8e8;
@@ -7993,6 +7999,9 @@ html {
   /* padding-right: 100px; */
   /* padding-top: 149px; */
   /* position: relative;  */ }
+
+.tab-content {
+  display: none; }
 
 #tabFrame input[name="tabRadio"],
 #tabContent [class^="tabContent_"] {

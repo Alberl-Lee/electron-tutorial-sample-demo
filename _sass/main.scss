@@ -28,9 +28,9 @@ $primary-invert: $pink-invert;
 
 @import "../node_modules/bulma/bulma.sass";
 
-html {
-  background-color: $blue;
-}
+// html {
+//   background-color: $blue;
+// }
 
 .bulma-arrow-mixin {
   @include arrow(black);
@@ -38,6 +38,16 @@ html {
 
 .bulma-delete-mixin {
   @include delete;
+}
+
+// 垂直水平居中
+.bulma-center-mixin {
+  @include center($width: 30);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  pointer-events: auto; // 禁止鼠标穿透。 设为none就是鼠标穿透
 }
 
 #left,
@@ -52,6 +62,11 @@ html {
   /* position: relative;  */
 }
 
+.tab-content {
+  display: none;
+}
+
+// 纯CSS实现的Tabs，但是逻辑稍微复杂了点，步骤也多，不方便复用
 #tabFrame input[name="tabRadio"],
 #tabContent [class^="tabContent_"] {
   display: none;
