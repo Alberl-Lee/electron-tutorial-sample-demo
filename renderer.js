@@ -226,3 +226,54 @@ var icons = {
 // $("#accordion2").accordion("option", "icons", icons); // 启动后,也可以改图标
 $("#accordion2").accordion({ icons: icons }); // 这句必须放到最后，否则样式会混乱
 $(".ui-icon").removeClass("ui-icon"); // 删除JQuery UI的所有图标，这样bulma的图标才能生效
+
+// bulmaAccordion.attach("#accordion3"); // accordions now contains an array of all Accordion instances
+// bulmaTagsinput.attach("#tagsinput");
+BulmaTagsInput.attach();
+
+// bulmaCarousel.attach("#carousel-demo", {
+//   slidesToScroll: 1,
+//   slidesToShow: 4,
+// });
+
+// Initialize all elements with carousel class.
+// const carousels = bulmaCarousel.attach(".carousel", options);
+
+// // To access to bulmaCarousel instance of an element
+// const element = document.querySelector("#carousel-demo");
+// if (element && element.bulmaCarousel) {
+//   // bulmaCarousel instance is available as element.bulmaCarousel
+//   element.bulmaCarousel.on("show", function (bulmaCarouselInstance) {
+//     console.log(bulmaCarouselInstance.index);
+//   });
+// }
+
+// bulmaCollapsible.attach("#collapsible-card");
+
+// bulmaAccordion.attach("#accordion3");
+// bulmaCarousel.attach("#slider", {
+//   slidesToScroll: 1,
+//   slidesToShow: 4,
+// });
+
+bulmaCollapsible.attach();
+// bulmaCarousel.attach();
+// bulmaCarousel.attach({
+//   slidesToScroll: 1,
+//   slidesToShow: 3,
+//   // autoplay:true
+// });
+
+bulmaCarousel.attach("#carousel-demo", {
+  slidesToScroll: 1,
+  slidesToShow: 4,
+});
+
+// // Initialize all elements with carousel class.
+// const carousels = bulmaCarousel.attach(".carousel", options);
+
+// // To access to bulmaCarousel instance of an element
+// const element = document.querySelector("#slider");
+// if (element && element.bulmaCarousel) {
+//   // bulmaCarousel instance is available as element.bulmaCarousel
+// }

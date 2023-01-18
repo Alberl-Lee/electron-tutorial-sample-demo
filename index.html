@@ -8,11 +8,22 @@
     <link rel="stylesheet" type="text/css" href="thirdparty/jquery-ui/jquery-ui.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" />
+    <!-- <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-extensions.css" /> -->
+    <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-collapsible.min.css" />
+    <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-badge.css" />
+    <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-tooltip.css" />
+    <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-tagsinput.css" />
+    <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-carousel.min.css" />
     <link href="css/main.css" rel="stylesheet" />
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script> -->
-    <script src="thirdparty/jquery/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+    <!-- <script src="thirdparty/jquery/jquery.js"></script> -->
     <script src="thirdparty/jquery-ui/jquery-ui.js"></script>
+    <!-- <script src="thirdparty/bulma-extensions/bulma-extensions.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script> -->
+    <script src="thirdparty/bulma-extensions/bulma-collapsible.min.js"></script>
+    <script src="thirdparty/bulma-extensions/bulma-tagsinput.js"></script>
+    <script src="thirdparty/bulma-extensions/bulma-carousel.js"></script>
 
     <title>Hello World!</title>
   </head>
@@ -23,6 +34,7 @@
         这是一个换行 <a href="https://www.electronjs.org/">这是一个链接</a>
       </div>
     </section>
+
     <div class="container">
       <span class="ui-icon ui-icon-caret-1-e"></span>
       <span class="fas fa-camera"></span>
@@ -45,6 +57,57 @@
 
       <span class="bulma-arrow-mixin"></span>
     </div>
+
+    <button class="button">
+      <span title="Badge top right" class="badge is-danger">8</span>
+      Button
+    </button>
+
+    <button class="button is-primary" data-tooltip="Tooltip Text">Tooltip</button>
+
+    <button class="button is-primary has-tooltip-multiline" data-tooltip="Tooltip with a long Text. So we use has-tooltip-multiline modifier to force multiline display.">
+      Multiline Tooltip
+    </button>
+
+    <div id="accordion_first">
+      <article class="message">
+        <div class="message-header">
+          <p>Question 1 <a href="#collapsible-message-accordion-1" class="is-active" data-action="collapse">Collapse/Expand</a></p>
+        </div>
+        <div id="collapsible-message-accordion-1" class="is-active message-body is-collapsible" data-parent="accordion_first">
+          <div class="message-body-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit
+            amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+          </div>
+        </div>
+      </article>
+      <article class="message">
+        <div class="message-header">
+          <p>Question 2 <a href="#collapsible-message-accordion-2" data-action="collapse">Collapse/Expand</a></p>
+        </div>
+        <div id="collapsible-message-accordion-2" class="message-body is-collapsible" data-parent="accordion_first">
+          <div class="message-body-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit
+            amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+          </div>
+        </div>
+      </article>
+      <article class="message">
+        <div class="message-header">
+          <p>Question 3 <a href="#collapsible-message-accordion-3" data-action="collapse">Collapse/Expand</a></p>
+        </div>
+        <div id="collapsible-message-accordion-3" class="message-body is-collapsible" data-parent="accordion_first">
+          <div class="message-body-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit
+            amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+          </div>
+        </div>
+      </article>
+    </div>
+
     <div id="accordion2">
       <div class="group">
         <h3 class="button is-primary is-outlined">&nbsp;Section 1： Drag me to sort 拖拽我 可以排序</h3>
@@ -227,14 +290,21 @@
           <div class="level-item">
             <label>&nbsp;&nbsp;&nbsp;&nbsp;radio2 : </label>
             <label class="radio">
-              <input type="radio" name="answer" />
+              <input type="radio" name="answer" checked="checked" />
               Yes
             </label>
             <label class="radio">
               <input type="radio" name="answer" />
               No
             </label>
+
+            <label>&nbsp;&nbsp;&nbsp;&nbsp;radio3 : </label>
+            <input class="is-checkradio" id="exampleRadioInline1" type="radio" name="exampleRadioInline" checked="checked" />
+            <label for="exampleRadioInline1">Option 1</label>
+            <input class="is-checkradio" id="exampleRadioInline2" type="radio" name="exampleRadioInline" />
+            <label for="exampleRadioInline2">Option 2</label>
           </div>
+
           <div class="level-item">
             <label>&nbsp;&nbsp;&nbsp;&nbsp;checkbox : </label>
             <input type="checkbox" checked="checked" />
@@ -246,6 +316,13 @@
               <input type="checkbox" />
               checkbox
             </label>
+
+            <div class="field">
+              <input class="is-checkradio" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked" />
+              <label for="exampleCheckbox">Check me</label>
+              <input class="is-checkradio" id="exampleCheckbox2" type="checkbox" name="exampleCheckbox" checked="checked" />
+              <label for="exampleCheckbox2">Check</label>
+            </div>
           </div>
         </div>
       </div>
@@ -296,6 +373,11 @@
           <span class="tag is-success">Success</span>
           <a class="tag is-delete" href="#btnDropdown"></a>
         </span>
+        <div class="column">
+          <button class="button is-primary has-tooltip-multiline" data-tooltip="Tooltip with a long Text. So we use has-tooltip-multiline modifier to force multiline display.">
+            Multiline Tooltip
+          </button>
+        </div>
 
         <button data-target="modal-js-example" class="button is-danger js-modal-trigger">trigger Modal</button>
         <div id="modal-js-example" class="modal">
@@ -315,8 +397,22 @@
           <input id="sliderRadius" type="range" min="0" max="1000" step="10" value="150" />
           <output id="sliderRadiusText" class="outputClear">150</output>
         </form>
+        <input class="slider is-fullwidth is-circle is-success" step="1" min="0" max="100" value="50" type="range" />
+
         progress:
         <progress class="progress is-success" value="22" max="100"></progress>
+        <div class="field">
+          <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" class="switch is-rounded" checked="checked" />
+          <label for="switchRoundedDefault">Switch rounded default</label>
+        </div>
+
+        <div class="field">
+          <label class="label">Tags</label>
+          <div class="control">
+            <input class="input" type="text" data-type="tags" placeholder="Choose Tags" value="One,Two" />
+          </div>
+        </div>
+
         <div class="block">
           <input type="number" step="1" min="0" max="93" value="0" style="width: 50px" />
           <input class="block" type="text" value="Edit" />
@@ -388,23 +484,25 @@
       <div class="card block">
         <header class="card-header">
           <p class="card-header-title">Component</p>
-          <button class="card-header-icon" aria-label="more options">
+          <a href="#collapsible-card" data-action="collapse" class="card-header-icon" aria-label="more options">
             <span class="icon">
               <i class="fas fa-angle-down" aria-hidden="true"></i>
             </span>
-          </button>
+          </a>
         </header>
-        <div class="card-content">
-          <div class="content">
-            this is a card <br />
-            has button
+        <div id="collapsible-card" class="is-collapsible is-active">
+          <div class="card-content">
+            <div class="content">
+              this is a card <br />
+              has button
+            </div>
           </div>
+          <footer class="card-footer">
+            <a href="#" class="card-footer-item">Save</a>
+            <a href="#" class="card-footer-item">Edit</a>
+            <a href="#" class="card-footer-item">Delete</a>
+          </footer>
         </div>
-        <footer class="card-footer">
-          <a href="#" class="card-footer-item">Save</a>
-          <a href="#" class="card-footer-item">Edit</a>
-          <a href="#" class="card-footer-item">Delete</a>
-        </footer>
       </div>
 
       <article class="panel is-primary block">
@@ -561,6 +659,7 @@
         <webview src="https://www.electronjs.org/" style="display: inline-flex; width: 580px; height: 350px"></webview>
       </div>
     </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script> -->
     <script src="./renderer.js"></script>
   </body>
 </html>
