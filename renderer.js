@@ -136,14 +136,16 @@ $(".dropdown").focusout(function () {
 
 // 模态框 JQuery代码：简化很多
 $(document).ready(function () {
-  $(".modal-close, .modal-background").click(function () {
-    $(".modal").removeClass("is-active");
+  $(".modal-close, .modal-background, .delete").click(function () {
+    $(this).parent(".modal").removeClass("is-active"); // 只关闭目前的
+    // $(".modal").removeClass("is-active"); // 关闭所有模态框
   });
 
   $(".js-modal-trigger").click(function () {
     // alert($(this).data("target"));
     var id = $(this).data("target"); // HTML5新属性data-target
     $("#" + id).addClass("is-active");
+    // $(":root").toggleClass("is-clipped");
   });
 });
 
@@ -167,5 +169,60 @@ $(".tabs>ul>li").click(function (e) {
   $(this).parents(".tabs").next().children().eq($(this).index()).addClass("is-block").siblings().removeClass("is-block");
 });
 
-// JQuery UI现成的tabs。 但是跟bulma不兼容，内容一个是放到tabs里面，一个是跟tabs同级。所以这个tabs不能融合只能二选一，显然风格更重要，自己再用上面的js就行了
-$("#tabsJQueryUI").tabs();
+// JQuery UI现成的tabs。 但是跟bulma不兼容，内容是放到tabs里面，但bulma是跟tabs同级。所以这个tabs不能融合只能二选一，显然风格更重要，自己再用上面的js就行了
+var tabs = $("#tabsJQueryUI").tabs();
+// tabs可拖拽
+var previouslyFocused = false;
+tabs.find(".ui-tabs-nav").sortable({
+  axis: "x",
+
+  // Sortable removes focus, so we need to restore it if the tab was focused
+  // prior to sorting
+  start: function (event, ui) {
+    previouslyFocused = document.activeElement === ui.item[0];
+  },
+  stop: function (event, ui) {
+    tabs.tabs("refresh");
+    if (previouslyFocused) {
+      ui.item.trigger("focus");
+    }
+  },
+});
+
+// 可拖拽排序  要加上class="group"属性，并且改变div布局，不兼容bluma的css,但是包装一下bluma的应该可以
+// 搞定了，调整下函数调用顺序，把accordion({ icons: icons });放到最后，然后removeClass("ui-icon");
+$("#accordion2")
+  .accordion({
+    header: "> div > h3",
+    // header: "h3",
+  })
+  .sortable({
+    axis: "y",
+    handle: "h3",
+    stop: function (event, ui) {
+      // IE doesn't register the blur when sorting
+      // so trigger focusout handlers to remove .ui-state-focus
+      ui.item.children("h3").triggerHandler("focusout");
+
+      // Refresh accordion to handle new order
+      $(this).accordion("refresh");
+      $(".ui-icon").removeClass("ui-icon"); // JQuery UI会操作css，所以要重置一下
+    },
+  });
+
+// JQuery UI的图标，是css生成的
+// var icons = {
+//   header: "ui-icon-circle-arrow-e",
+//   activeHeader: "ui-icon-circle-arrow-s",
+// };
+//
+// bulma的图标
+var icons = {
+  header: "fa-solid fa-caret-right",
+  activeHeader: "fa-solid fa-caret-down",
+};
+// $("#accordion2").accordion(); // 默认样式，不可拖拽排序
+// $("#accordion2").accordion({ icons: icons }); // 启动后,就不能改图标了
+// $("#accordion2").accordion("option", "icons", icons); // 启动后,也可以改图标
+$("#accordion2").accordion({ icons: icons }); // 这句必须放到最后，否则样式会混乱
+$(".ui-icon").removeClass("ui-icon"); // 删除JQuery UI的所有图标，这样bulma的图标才能生效

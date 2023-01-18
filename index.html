@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'" /> -->
-    <!-- 不要引入jquery-ui.css 否则主题跟bulma不搭调 -->
     <link rel="stylesheet" type="text/css" href="thirdparty/jquery-ui/jquery-ui.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" />
@@ -24,50 +23,255 @@
         这是一个换行 <a href="https://www.electronjs.org/">这是一个链接</a>
       </div>
     </section>
+    <div class="container">
+      <span class="ui-icon ui-icon-caret-1-e"></span>
+      <span class="fas fa-camera"></span>
+      <span class="fas fa-camera" style="--fa-li-width: 4em"></span>
+      <span style="font-size: 2em; color: Dodgerblue">
+        <i class="fa-solid fa-camera"></i>
+      </span>
+      <!-- 各种icon组合 -->
+      <span class="icon is-large">
+        <span class="fa-stack fa-lg">
+          <i class="fas fa-camera fa-stack-1x"></i>
+          <i class="fas fa-ban fa-stack-2x has-text-danger"></i>
+        </span>
+      </span>
+      <!-- icon动画 fa-spin是旋转动画-->
+      <i class="fa-solid fa-circle-notch fa-spin"></i>
 
+      <i class="fa-solid fa-caret-down"></i>
+      <i class="fa-solid fa-caret-right"></i>
+
+      <span class="bulma-arrow-mixin"></span>
+    </div>
+    <div id="accordion2">
+      <div class="group">
+        <h3 class="button is-primary is-outlined">&nbsp;Section 1： Drag me to sort 拖拽我 可以排序</h3>
+        <div>
+          <p>
+            Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh.
+            Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+          </p>
+        </div>
+      </div>
+      <div class="group">
+        <h3 class="button is-primary">&nbsp;Section 2</h3>
+        <div>
+          <p>
+            Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus
+            interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.
+          </p>
+        </div>
+      </div>
+      <div class="group">
+        <h3>Section 3</h3>
+        <div>
+          <p>
+            Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus
+            pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+          </p>
+          <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+            <li>List item three</li>
+          </ul>
+        </div>
+      </div>
+      <div class="group">
+        <h3 class="button is-warning">Section 4</h3>
+        <div>
+          <p>
+            Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et
+            ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.
+          </p>
+          <p>
+            Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-primary">
+              <p class="title">Vertical...</p>
+              <p class="subtitle">Top tile</p>
+            </article>
+            <article class="tile is-child notification is-warning">
+              <p class="title">...tiles</p>
+              <p class="subtitle">Bottom tile</p>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-info">
+              <p class="title">Middle tile</p>
+              <p class="subtitle">With an image</p>
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/640x480.png" />
+              </figure>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger">
+            <p class="title">Wide tile</p>
+            <p class="subtitle">Aligned with the right tile</p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-success">
+          <div class="content">
+            <p class="title">Tall tile</p>
+            <p class="subtitle">With even more content</p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
     <div id="left">
+      <section class="hero is-small is-primary has-text-centered">
+        <div class="hero-body">
+          <p class="title">Small hero</p>
+          <p class="subtitle">vCenter and hCenter</p>
+        </div>
+      </section>
+      <section class="container has-text-centered">
+        <div class="hero-body">
+          <p class="title">Small hero</p>
+          <p class="subtitle">vCenter and hCenter</p>
+        </div>
+      </section>
+      <section class="is-small is-primary" style="display: flex; align-items: center; justify-content: center; height: 50px; border: 1px solid">
+        <div class="">
+          <p>native CSS vCenter and hCenter</p>
+        </div>
+      </section>
+      <section class="is-small is-primary is-flex is-align-items-center is-justify-content-center" style="height: 50px; border: 1px solid">
+        <div class="">
+          <p>bulma vCenter and hCenter</p>
+        </div>
+      </section>
       <div class="block">
-        <img height="64" width="64" src="assets/electron.png" />
-        <span>SVG:</span>
-        <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
-          <path
-            fill-rule="evenodd"
-            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
-          ></path>
-        </svg>
-        <svg width="50" height="50">
-          <circle cx="25" cy="25" r="20" stroke="black" stroke-width="1" fill="hsl(204, 86%, 53%)" />
-          抱歉，您的浏览器不支持嵌入式 SVG。
-        </svg>
-        <span class="bulma-arrow-mixin bulma-center-mixin"></span>
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;radio : </label>
-        <input type="radio" name="tabRadioTest" checked="checked" />
-        <input type="radio" name="tabRadioTest" />
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;checkbox : </label>
-        <input type="checkbox" checked="checked" />
-        <input type="checkbox" />
+        <!-- level 子元素水平间隔对齐，子元素加上 level-item后，会强制子元素水平排列，不换行 -->
+        <div class="level">
+          <!-- Left side -->
+          <div class="level-left">
+            <div class="level-item">
+              <img height="64" width="64" src="assets/electron.png" />
+            </div>
+            <div class="level-item">
+              <div class="box">
+                <!-- has-text-centered 让内容垂直水平居中 -->
+                <div class="has-text-centered container">
+                  <img height="64" width="64" src="assets/electron.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side -->
+          <div class="level-right">
+            <div class="level-item">
+              <span>SVG:</span>
+              <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+                <path
+                  fill-rule="evenodd"
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                ></path>
+              </svg>
+            </div>
+            <div class="level-item">
+              <svg width="50" height="50">
+                <circle cx="25" cy="25" r="20" stroke="black" stroke-width="1" fill="hsl(204, 86%, 53%)" />
+                抱歉，您的浏览器不支持嵌入式 SVG。
+              </svg>
+            </div>
+          </div>
+        </div>
+        <nav class="level is-mobile">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Tweets</p>
+              <p class="title">3,456</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Following</p>
+              <p class="title">123</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Followers</p>
+              <p class="title">456K</p>
+            </div>
+          </div>
+        </nav>
+
+        <div class="level">
+          <div class="level-item">
+            <label>&nbsp;&nbsp;&nbsp;&nbsp;radio : </label>
+            <input type="radio" name="tabRadioTest" checked="checked" />
+            <input type="radio" name="tabRadioTest" />
+          </div>
+          <div class="level-item">
+            <label>&nbsp;&nbsp;&nbsp;&nbsp;radio2 : </label>
+            <label class="radio">
+              <input type="radio" name="answer" />
+              Yes
+            </label>
+            <label class="radio">
+              <input type="radio" name="answer" />
+              No
+            </label>
+          </div>
+          <div class="level-item">
+            <label>&nbsp;&nbsp;&nbsp;&nbsp;checkbox : </label>
+            <input type="checkbox" checked="checked" />
+            <input type="checkbox" />
+          </div>
+          <div class="level-item">
+            <input type="checkbox" class="checkbox" />
+            <label class="checkbox">
+              <input type="checkbox" />
+              checkbox
+            </label>
+          </div>
+        </div>
       </div>
 
       <div class="block">
-        <button>button</button>
-        <button class="button is-small">bluma</button>
-        <button class="button">
-          <span class="icon">
-            <i class="fab fa-github"></i>
+        <div class="level">
+          <button>button</button>
+          <button class="button is-small">bluma</button>
+          <button class="button">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+            <span>GitHub</span>
+          </button>
+          <button class="button">
+            <span class="icon is-small">
+              <i class="fas fa-underline"></i>
+            </span>
+          </button>
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fas fa-home"></i>
+            </span>
+            <span>Home</span>
           </span>
-          <span>GitHub</span>
-        </button>
-        <button class="button">
-          <span class="icon is-small">
-            <i class="fas fa-underline"></i>
-          </span>
-        </button>
-        <span class="icon-text">
-          <span class="icon">
-            <i class="fas fa-home"></i>
-          </span>
-          <span>Home</span>
-        </span>
+        </div>
         <button class="button is-primary">color btn</button>
         <button class="button is-primary is-outlined">outlined</button>
         <button class="button is-text">Text</button>
@@ -87,6 +291,7 @@
           Success
           <button class="delete is-small"></button>
         </span>
+        <!--marginTopSmall 在bulma有，是 mt-1  mt-* -->
         <span class="tags has-addons marginTopSmall">
           <span class="tag is-success">Success</span>
           <a class="tag is-delete" href="#btnDropdown"></a>
@@ -114,7 +319,8 @@
         <progress class="progress is-success" value="22" max="100"></progress>
         <div class="block">
           <input type="number" step="1" min="0" max="93" value="0" style="width: 50px" />
-          <input type="text" value="Edit" />
+          <input class="block" type="text" value="Edit" />
+          <input class="input" type="text" placeholder="Text input" />
           <div class="panel-block">
             <p class="control has-icons-left">
               <input class="input is-primary" type="text" placeholder="Search" />
@@ -123,17 +329,33 @@
               </span>
             </p>
           </div>
-          <label>&nbsp;&nbsp;droplist :</label>
+          <div class="field">
+            <label class="label">Message</label>
+            <div class="control">
+              <textarea class="textarea" placeholder="Textarea"></textarea>
+            </div>
+          </div>
+          <textarea rows="7" cols="30">
+            我是一个
+            多行文本框
+          </textarea>
+          <label>&nbsp;&nbsp;dropdown :</label>
           <select>
             <option value="1">111</option>
             <option value="2">222</option>
             <option value="3">333</option>
           </select>
+          <div class="select">
+            <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+            </select>
+          </div>
           <!-- is-hoverable  is-active-->
           <div class="dropdown">
             <div class="dropdown-trigger">
               <button id="btnDropdown" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span>DropList</span>
+                <span>dropdown</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
                 </span>
@@ -193,7 +415,7 @@
             <li>
               <a href="#tabs-1">
                 <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
-                <span>Music</span>
+                <span>Drag me</span>
               </a>
             </li>
             <li>
@@ -278,7 +500,7 @@
 
       <!-- <button id="distort_btnDel" onclick="distort_btnDel()">删除</button> -->
 
-      <table class="table is-bordered">
+      <table class="table is-bordered has-text-centered">
         <colgroup>
           <col span="2" style="background-color: #0075ff" />
           <col style="background-color: gray" />
@@ -294,11 +516,7 @@
           <td>2</td>
         </tr>
       </table>
-      <textarea rows="7" cols="30">
-        我是一个
-        多行文本框。
-        </textarea
-      >
+
       <div class="box">
         <div class="columns">
           <div class="column">

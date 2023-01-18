@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import "../node_modules/bulma/bulma.sass";
 
 // Customization
 
@@ -26,8 +27,6 @@ $primary-invert: $pink-invert;
 // 4. Import the rest of Bulma
 */
 
-@import "../node_modules/bulma/bulma.sass";
-
 // html {
 //   background-color: $blue;
 // }
@@ -48,6 +47,71 @@ $primary-invert: $pink-invert;
 .cursor-pointer {
   cursor: pointer;
   pointer-events: auto; // 禁止鼠标穿透。 设为none就是鼠标穿透
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.absoluteFull {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+// 文字水平居中
+.textCenter {
+  text-align: center;
+}
+
+// 垂直水平居中 子元素
+.childToCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 垂直居中 子元素
+.childToVCenter {
+  display: flex;
+  align-items: center;
+}
+
+// 垂直居中 子元素，非flex布局
+.vCenter {
+  vertical-align: middle;
+}
+
+// 文字超出后边省略号
+.textOverFlow {
+  word-break: normal;
+  width: auto;
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 文字超出后边省略号，多行文本
+.autoBreak {
+  /* 
+  自动变成多行文本，并且超出后变成省略号 
+  纯汉字有效，部分英文数字也行，英文太多就不对了
+  */
+  width: 100%;
+  /* height: 100%; */
+  text-overflow: ellipsis;
+  /* background: greenyellow; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  /*-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：
+  display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+  -webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
 }
 
 #left,
@@ -91,10 +155,6 @@ $primary-invert: $pink-invert;
   line-height: 40px;
   width: 70px;
   height: 40px;
-}
-
-.textCenter {
-  text-align: center;
 }
 
 .tabTitle label:hover {
