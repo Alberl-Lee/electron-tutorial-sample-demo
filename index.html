@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="thirdparty/jquery-ui/jquery-ui.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" />
-    <!-- <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-extensions.css" /> -->
+    <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-extensions.css" />
     <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-collapsible.min.css" />
     <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-badge.css" />
     <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-tooltip.css" />
@@ -19,215 +19,80 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
     <!-- <script src="thirdparty/jquery/jquery.js"></script> -->
     <script src="thirdparty/jquery-ui/jquery-ui.js"></script>
-    <!-- <script src="thirdparty/bulma-extensions/bulma-extensions.js"></script> -->
+    <script src="thirdparty/bulma-extensions/bulma-extensions.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script> -->
     <script src="thirdparty/bulma-extensions/bulma-collapsible.min.js"></script>
     <script src="thirdparty/bulma-extensions/bulma-tagsinput.js"></script>
     <script src="thirdparty/bulma-extensions/bulma-carousel.js"></script>
 
-    <title>Hello World!</title>
+    <title>Electron demo - by 中国Alberl</title>
   </head>
   <body oncontextmenu="showMenu(event)">
-    <section class="section is-max-desktop">
-      <div>
-        <h1 class="subtitle">Hello World!</h1>
-        这是一个换行 <a href="https://www.electronjs.org/">这是一个链接</a>
-      </div>
-    </section>
+    <div class="tabs is-centered is-boxed mb-0">
+      <ul>
+        <li class="is-active">
+          <a>
+            <img height="24" width="24" src="assets/electron.png" />
+            <span>&nbsp;Control</span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <!-- icon动画 fa-spin是旋转动画-->
+            <i class="fa-brands fa-github fa-lg fa-spin"></i>
+            <span> &nbsp;Animate </span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <span class="icon is-small">
+              <i class="fas fa-film" aria-hidden="true"></i>
+            </span>
+            <span>Table</span>
+          </a>
+        </li>
 
-    <div class="container">
-      <span class="ui-icon ui-icon-caret-1-e"></span>
-      <span class="fas fa-camera"></span>
-      <span class="fas fa-camera" style="--fa-li-width: 4em"></span>
-      <span style="font-size: 2em; color: Dodgerblue">
-        <i class="fa-solid fa-camera"></i>
-      </span>
-      <!-- 各种icon组合 -->
-      <span class="icon is-large">
-        <span class="fa-stack fa-lg">
-          <i class="fas fa-camera fa-stack-1x"></i>
-          <i class="fas fa-ban fa-stack-2x has-text-danger"></i>
-        </span>
-      </span>
-      <!-- icon动画 fa-spin是旋转动画-->
-      <i class="fa-solid fa-circle-notch fa-spin"></i>
+        <li><a> Tabs </a></li>
+        <li><a> Layout </a></li>
 
-      <i class="fa-solid fa-caret-down"></i>
-      <i class="fa-solid fa-caret-right"></i>
-
-      <span class="bulma-arrow-mixin"></span>
+        <li>
+          <a>
+            <span class="icon"><i class="fas fa-music fa-lg" aria-hidden="true"></i></span>
+            <i class="fas fa-film"></i>
+            <span>&nbsp;Media & Webpage</span>
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <button class="button">
-      <span title="Badge top right" class="badge is-danger">8</span>
-      Button
-    </button>
-
-    <button class="button is-primary" data-tooltip="Tooltip Text">Tooltip</button>
-
-    <button class="button is-primary has-tooltip-multiline" data-tooltip="Tooltip with a long Text. So we use has-tooltip-multiline modifier to force multiline display.">
-      Multiline Tooltip
-    </button>
-
-    <div id="accordion_first">
-      <article class="message">
-        <div class="message-header">
-          <p>Question 1 <a href="#collapsible-message-accordion-1" class="is-active" data-action="collapse">Collapse/Expand</a></p>
-        </div>
-        <div id="collapsible-message-accordion-1" class="is-active message-body is-collapsible" data-parent="accordion_first">
-          <div class="message-body-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit
-            amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-          </div>
-        </div>
-      </article>
-      <article class="message">
-        <div class="message-header">
-          <p>Question 2 <a href="#collapsible-message-accordion-2" data-action="collapse">Collapse/Expand</a></p>
-        </div>
-        <div id="collapsible-message-accordion-2" class="message-body is-collapsible" data-parent="accordion_first">
-          <div class="message-body-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit
-            amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-          </div>
-        </div>
-      </article>
-      <article class="message">
-        <div class="message-header">
-          <p>Question 3 <a href="#collapsible-message-accordion-3" data-action="collapse">Collapse/Expand</a></p>
-        </div>
-        <div id="collapsible-message-accordion-3" class="message-body is-collapsible" data-parent="accordion_first">
-          <div class="message-body-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit
-            amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div id="accordion2">
-      <div class="group">
-        <h3 class="button is-primary is-outlined">&nbsp;Section 1： Drag me to sort 拖拽我 可以排序</h3>
-        <div>
-          <p>
-            Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh.
-            Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-          </p>
-        </div>
-      </div>
-      <div class="group">
-        <h3 class="button is-primary">&nbsp;Section 2</h3>
-        <div>
-          <p>
-            Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus
-            interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.
-          </p>
-        </div>
-      </div>
-      <div class="group">
-        <h3>Section 3</h3>
-        <div>
-          <p>
-            Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus
-            pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-          </p>
-          <ul>
-            <li>List item one</li>
-            <li>List item two</li>
-            <li>List item three</li>
-          </ul>
-        </div>
-      </div>
-      <div class="group">
-        <h3 class="button is-warning">Section 4</h3>
-        <div>
-          <p>
-            Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et
-            ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.
-          </p>
-          <p>
-            Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="tile is-ancestor">
-      <div class="tile is-vertical is-8">
-        <div class="tile">
-          <div class="tile is-parent is-vertical">
-            <article class="tile is-child notification is-primary">
-              <p class="title">Vertical...</p>
-              <p class="subtitle">Top tile</p>
-            </article>
-            <article class="tile is-child notification is-warning">
-              <p class="title">...tiles</p>
-              <p class="subtitle">Bottom tile</p>
-            </article>
-          </div>
-          <div class="tile is-parent">
-            <article class="tile is-child notification is-info">
-              <p class="title">Middle tile</p>
-              <p class="subtitle">With an image</p>
-              <figure class="image is-4by3">
-                <img src="https://bulma.io/images/placeholders/640x480.png" />
-              </figure>
-            </article>
-          </div>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child notification is-danger">
-            <p class="title">Wide tile</p>
-            <p class="subtitle">Aligned with the right tile</p>
-            <div class="content">
-              <!-- Content -->
-            </div>
-          </article>
-        </div>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child notification is-success">
-          <div class="content">
-            <p class="title">Tall tile</p>
-            <p class="subtitle">With even more content</p>
-            <div class="content">
-              <!-- Content -->
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-    <div id="left">
-      <section class="hero is-small is-primary has-text-centered">
-        <div class="hero-body">
-          <p class="title">Small hero</p>
-          <p class="subtitle">vCenter and hCenter</p>
-        </div>
-      </section>
-      <section class="container has-text-centered">
-        <div class="hero-body">
-          <p class="title">Small hero</p>
-          <p class="subtitle">vCenter and hCenter</p>
-        </div>
-      </section>
-      <section class="is-small is-primary" style="display: flex; align-items: center; justify-content: center; height: 50px; border: 1px solid">
-        <div class="">
-          <p>native CSS vCenter and hCenter</p>
-        </div>
-      </section>
-      <section class="is-small is-primary is-flex is-align-items-center is-justify-content-center" style="height: 50px; border: 1px solid">
-        <div class="">
-          <p>bulma vCenter and hCenter</p>
-        </div>
-      </section>
-      <div class="block">
+    <div>
+      <!-- <div class="tab-content is-block" style="height: 150px; border: 1px solid">Control Content</div> -->
+      <div class="tab-content is-block">
         <!-- level 子元素水平间隔对齐，子元素加上 level-item后，会强制子元素水平排列，不换行 -->
-        <div class="level">
+        <!-- 窗口调小时，就会变成垂直布局，加上is-mobile就一直保持水平布局 -->
+        <div class="level is-mobile">
           <!-- Left side -->
           <div class="level-left">
+            <div class="level-item">
+              <div class="container">
+                <span class="fas fa-camera" style="--fa-li-width: 4em"></span>
+                <span style="font-size: 2em; color: Dodgerblue">
+                  <i class="fa-solid fa-camera"></i>
+                </span>
+                <!-- 各种icon组合 -->
+                <span class="icon is-large">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-camera fa-stack-1x"></i>
+                    <i class="fas fa-ban fa-stack-2x has-text-danger"></i>
+                  </span>
+                </span>
+
+                <i class="fa-solid fa-caret-down"></i>
+                <i class="fa-solid fa-caret-right"></i>
+
+                <span class="bulma-arrow-mixin"></span>
+              </div>
+            </div>
             <div class="level-item">
               <img height="64" width="64" src="assets/electron.png" />
             </div>
@@ -244,7 +109,7 @@
           <!-- Right side -->
           <div class="level-right">
             <div class="level-item">
-              <span>SVG:</span>
+              <span>SVG : &nbsp;</span>
               <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
                 <path
                   fill-rule="evenodd"
@@ -260,28 +125,8 @@
             </div>
           </div>
         </div>
-        <nav class="level is-mobile">
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Tweets</p>
-              <p class="title">3,456</p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Following</p>
-              <p class="title">123</p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading">Followers</p>
-              <p class="title">456K</p>
-            </div>
-          </div>
-        </nav>
 
-        <div class="level">
+        <div class="level is-mobile">
           <div class="level-item">
             <label>&nbsp;&nbsp;&nbsp;&nbsp;radio : </label>
             <input type="radio" name="tabRadioTest" checked="checked" />
@@ -325,139 +170,193 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="block">
-        <div class="level">
-          <button>button</button>
-          <button class="button is-small">bluma</button>
-          <button class="button">
-            <span class="icon">
-              <i class="fab fa-github"></i>
+        <div class="block">
+          <div class="level is-mobile">
+            <button>button</button>
+            <button class="button is-small">bluma</button>
+            <button class="button">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </button>
+            <button class="button">
+              <span class="icon is-small">
+                <i class="fas fa-underline"></i>
+              </span>
+            </button>
+            <span class="icon-text">
+              <span class="icon">
+                <i class="fas fa-home"></i>
+              </span>
+              <span>Home</span>
             </span>
-            <span>GitHub</span>
-          </button>
-          <button class="button">
-            <span class="icon is-small">
-              <i class="fas fa-underline"></i>
+          </div>
+          <button class="button is-primary">color btn</button>
+          <button class="button is-primary is-outlined">outlined</button>
+          <button class="button is-text">Text</button>
+          <button class="button is-ghost">Ghost</button>
+          <a href="https://www.electronjs.org/">点击打开网页</a>
+
+          <button class="button is-info is-loading">Button</button>
+          <button class="button is-success is-rounded">Rounded</button>
+
+          <button class="button" style="width: 60px; height: 60px; border-radius: 50%; background-color: hsl(141, 53%, 53%)">circle<br />按钮</button>
+          <button class="tri marginLeftSmall">tri</button>
+          <button class="bulma-delete-mixin"></button>
+          <button class="delete is-medium"></button>
+
+          <span class="tag is-warning">Warning</span>
+          <span class="tag is-danger">Danger</span>
+
+          <div class="field is-grouped is-grouped-multiline">
+            <!-- control包起来会自动留间隙 -->
+            <div class="control">
+              <div class="tags has-addons">
+                <span class="tag is-dark">npm</span>
+                <span class="tag is-info">0.9.4</span>
+              </div>
+            </div>
+
+            <div class="tags has-addons mr-3">
+              <span class="tag is-dark">build</span>
+              <span class="tag is-success">passing</span>
+            </div>
+
+            <div class="control">
+              <div class="tags has-addons">
+                <span class="tag is-dark">chat</span>
+                <span class="tag is-primary">on gitter</span>
+              </div>
+            </div>
+
+            <div class="control">
+              <div class="tags has-addons">
+                <span class="tag is-success">Success</span>
+                <a class="tag is-delete"></a>
+              </div>
+            </div>
+            <span class="tag is-success mr-3">
+              Success
+              <button class="delete is-small"></button>
             </span>
-          </button>
-          <span class="icon-text">
-            <span class="icon">
-              <i class="fas fa-home"></i>
-            </span>
-            <span>Home</span>
+            <button class="button">
+              <span title="Badge top right" class="badge is-danger">8</span>
+              Button
+            </button>
+          </div>
+
+          <div class="control">
+            <div class="tags has-addons">
+              <span class="tag is-dark">chat</span>
+              <span class="tag is-primary">on gitter</span>
+            </div>
+          </div>
+
+          <span class="tags has-addons mr-3">
+            <span class="tag is-dark">build</span>
+            <span class="tag is-success">passing</span>
           </span>
-        </div>
-        <button class="button is-primary">color btn</button>
-        <button class="button is-primary is-outlined">outlined</button>
-        <button class="button is-text">Text</button>
-        <button class="button is-ghost">Ghost</button>
 
-        <button class="button is-info is-loading">Button</button>
-        <button class="button is-success is-rounded">Rounded</button>
-
-        <button class="button" style="width: 60px; height: 60px; border-radius: 50%; background-color: hsl(141, 53%, 53%)">circle<br />按钮</button>
-        <button class="tri marginLeftSmall">tri</button>
-        <button class="bulma-delete-mixin"></button>
-        <button class="delete is-medium"></button>
-
-        <span class="tag is-warning">Warning</span>
-        <span class="tag is-danger">Danger</span>
-        <span class="tag is-success">
-          Success
-          <button class="delete is-small"></button>
-        </span>
-        <!--marginTopSmall 在bulma有，是 mt-1  mt-* -->
-        <span class="tags has-addons marginTopSmall">
-          <span class="tag is-success">Success</span>
-          <a class="tag is-delete" href="#btnDropdown"></a>
-        </span>
-        <div class="column">
+          <button class="button is-primary" data-tooltip="Tooltip&nbsp;Text">Tooltip</button>
           <button class="button is-primary has-tooltip-multiline" data-tooltip="Tooltip with a long Text. So we use has-tooltip-multiline modifier to force multiline display.">
             Multiline Tooltip
           </button>
-        </div>
 
-        <button data-target="modal-js-example" class="button is-danger js-modal-trigger">trigger Modal</button>
-        <div id="modal-js-example" class="modal">
-          <div class="modal-background"></div>
-          <div class="modal-content">
-            <div class="box">
-              <p>Modal JS example</p>
-              <!-- Your content -->
+          <button data-target="modal-js-example" class="button is-danger js-modal-trigger">trigger Modal</button>
+          <div id="modal-js-example" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+              <div class="box">
+                <p>Modal JS example</p>
+                <!-- Your content -->
+              </div>
             </div>
-          </div>
-          <button class="modal-close is-large" aria-label="close"></button>
-        </div>
-      </div>
-      <div class="box block">
-        <form oninput="sliderRadiusText.value=parseInt(sliderRadius.value)">
-          <label>slider:</label>
-          <input id="sliderRadius" type="range" min="0" max="1000" step="10" value="150" />
-          <output id="sliderRadiusText" class="outputClear">150</output>
-        </form>
-        <input class="slider is-fullwidth is-circle is-success" step="1" min="0" max="100" value="50" type="range" />
-
-        progress:
-        <progress class="progress is-success" value="22" max="100"></progress>
-        <div class="field">
-          <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" class="switch is-rounded" checked="checked" />
-          <label for="switchRoundedDefault">Switch rounded default</label>
-        </div>
-
-        <div class="field">
-          <label class="label">Tags</label>
-          <div class="control">
-            <input class="input" type="text" data-type="tags" placeholder="Choose Tags" value="One,Two" />
+            <button class="modal-close is-large" aria-label="close"></button>
           </div>
         </div>
 
-        <div class="block">
-          <input type="number" step="1" min="0" max="93" value="0" style="width: 50px" />
-          <input class="block" type="text" value="Edit" />
-          <input class="input" type="text" placeholder="Text input" />
-          <div class="panel-block">
-            <p class="control has-icons-left">
-              <input class="input is-primary" type="text" placeholder="Search" />
-              <span class="icon is-left">
-                <i class="fas fa-search cursor-pointer" aria-hidden="true"></i>
-              </span>
-            </p>
-          </div>
+        <div class="box block">
+          <form oninput="sliderRadiusText.value=parseInt(sliderRadius.value)">
+            <label>slider:</label>
+            <input id="sliderRadius" type="range" min="0" max="1000" step="10" value="150" />
+            <output id="sliderRadiusText" class="outputClear">150</output>
+          </form>
+          <input class="slider is-fullwidth is-circle is-success" step="1" min="0" max="100" value="50" type="range" />
+
+          progress:
+          <progress class="progress is-success" value="22" max="100"></progress>
           <div class="field">
-            <label class="label">Message</label>
+            <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" class="switch is-rounded" checked="checked" />
+            <label for="switchRoundedDefault">Switch rounded default</label>
+          </div>
+
+          <div class="field">
+            <label class="label">Tags</label>
             <div class="control">
-              <textarea class="textarea" placeholder="Textarea"></textarea>
+              <input class="input" type="text" data-type="tags" placeholder="Choose Tags" value="One,Two" />
             </div>
           </div>
-          <textarea rows="7" cols="30">
+
+          <div class="block">
+            <input type="number" step="1" min="0" max="93" value="0" style="width: 50px" />
+            <input class="block" type="text" value="Edit" />
+            <input class="input" type="text" placeholder="Text input" />
+            <div class="panel-block">
+              <p class="control has-icons-left">
+                <input class="input is-primary" type="text" placeholder="Search" />
+                <span class="icon is-left">
+                  <i class="fas fa-search cursor-pointer" aria-hidden="true"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <label class="label">Message</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Textarea"></textarea>
+              </div>
+            </div>
+            <textarea rows="7" cols="30">
             我是一个
             多行文本框
-          </textarea>
-          <label>&nbsp;&nbsp;dropdown :</label>
-          <select>
-            <option value="1">111</option>
-            <option value="2">222</option>
-            <option value="3">333</option>
-          </select>
-          <div class="select">
+          </textarea
+            >
+            <label>&nbsp;&nbsp;dropdown :</label>
             <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
+              <option value="1">111</option>
+              <option value="2">222</option>
+              <option value="3">333</option>
             </select>
-          </div>
-          <!-- is-hoverable  is-active-->
-          <div class="dropdown">
-            <div class="dropdown-trigger">
-              <button id="btnDropdown" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span>dropdown</span>
-                <span class="icon is-small">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
+            <div class="select">
+              <select>
+                <option>Select dropdown</option>
+                <option>With options</option>
+              </select>
             </div>
-            <div id="dropdown-menu" class="dropdown-menu" role="menu">
+            <!-- is-hoverable  is-active-->
+            <div class="dropdown">
+              <div class="dropdown-trigger">
+                <button id="btnDropdown" class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>dropdown</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div id="dropdown-menu" class="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a href="#" class="dropdown-item"> Dropdown item </a>
+                  <a class="dropdown-item"> Other dropdown item </a>
+                  <a href="#" class="dropdown-item is-active"> Active dropdown item </a>
+                  <a href="#" class="dropdown-item"> Other dropdown item </a>
+                  <hr class="dropdown-divider" />
+                  <a href="#" class="dropdown-item"> With a divider </a>
+                </div>
+              </div>
+            </div>
+
+            <div id="global-menu" class="dropdown-menu" role="menu">
               <div class="dropdown-content">
                 <a href="#" class="dropdown-item"> Dropdown item </a>
                 <a class="dropdown-item"> Other dropdown item </a>
@@ -468,197 +367,430 @@
               </div>
             </div>
           </div>
+        </div>
 
-          <div id="global-menu" class="dropdown-menu" role="menu">
-            <div class="dropdown-content">
-              <a href="#" class="dropdown-item"> Dropdown item </a>
-              <a class="dropdown-item"> Other dropdown item </a>
-              <a href="#" class="dropdown-item is-active"> Active dropdown item </a>
-              <a href="#" class="dropdown-item"> Other dropdown item </a>
-              <hr class="dropdown-divider" />
-              <a href="#" class="dropdown-item"> With a divider </a>
+        <div class="card block">
+          <header class="card-header">
+            <p class="card-header-title">Component</p>
+            <a href="#collapsible-card" data-action="collapse" class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </a>
+          </header>
+          <div id="collapsible-card" class="is-collapsible is-active">
+            <div class="card-content">
+              <div class="content">
+                this is a card <br />
+                has button
+              </div>
+            </div>
+            <a class="panel-block is-active">
+              <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+              </span>
+              bulma
+            </a>
+            <a class="panel-block">
+              <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+              </span>
+              marksheet
+            </a>
+            <a class="panel-block"> github </a>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Save</a>
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" style="border: 1px solid">Animate Content</div>
+      <div class="tab-content">
+        <table class="table is-bordered has-text-centered">
+          <colgroup>
+            <col span="2" style="background-color: #0075ff" />
+            <col style="background-color: gray" />
+          </colgroup>
+          <tr>
+            <th>Grid1</th>
+            <th>Grid2</th>
+            <th>Grid3</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>hello world</td>
+            <td>2</td>
+          </tr>
+        </table>
+      </div>
+      <div class="tab-content">
+        <div id="accordion_first">
+          <article class="message">
+            <div class="message-header">
+              <p>Question 1 <a href="#collapsible-message-accordion-1" class="is-active" data-action="collapse">Collapse/Expand</a></p>
+            </div>
+            <div id="collapsible-message-accordion-1" class="is-active message-body is-collapsible" data-parent="accordion_first">
+              <div class="message-body-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
+                sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
+                et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+              </div>
+            </div>
+          </article>
+          <article class="message">
+            <div class="message-header">
+              <p>Question 2 <a href="#collapsible-message-accordion-2" data-action="collapse">Collapse/Expand</a></p>
+            </div>
+            <div id="collapsible-message-accordion-2" class="message-body is-collapsible" data-parent="accordion_first">
+              <div class="message-body-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
+                sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
+                et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+              </div>
+            </div>
+          </article>
+          <article class="message">
+            <div class="message-header">
+              <p>Question 3 <a href="#collapsible-message-accordion-3" data-action="collapse">Collapse/Expand</a></p>
+            </div>
+            <div id="collapsible-message-accordion-3" class="message-body is-collapsible" data-parent="accordion_first">
+              <div class="message-body-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
+                sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
+                et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <section id="accordion2">
+          <div class="group">
+            <h3 class="button is-primary is-outlined">&nbsp;Section 1： Drag me to sort 拖拽我 可以排序</h3>
+            <div>
+              <p>
+                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a
+                nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+              </p>
+            </div>
+          </div>
+          <div class="group">
+            <h3 class="button is-primary">&nbsp;Section 2</h3>
+            <div>
+              <p>
+                Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus
+                interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.
+              </p>
+            </div>
+          </div>
+          <div class="group">
+            <h3>Section 3</h3>
+            <div>
+              <p>
+                Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus
+                pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+              </p>
+              <ul>
+                <li>List item one</li>
+                <li>List item two</li>
+                <li>List item three</li>
+              </ul>
+            </div>
+          </div>
+          <div class="group">
+            <h3 class="button is-warning">Section 4</h3>
+            <div>
+              <p>
+                Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et
+                ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.
+              </p>
+              <p>
+                Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+                himenaeos.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <article class="panel is-primary block">
+          <p class="panel-heading block">Tabs</p>
+
+          <div id="tabsJQueryUI" class="is-centered is-boxed block">
+            <ul>
+              <li>
+                <a href="#tabs-1">
+                  <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+                  <span>Drag me</span>
+                </a>
+              </li>
+              <li>
+                <a href="#tabs-2">
+                  <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                  <span>Videos</span>
+                </a>
+              </li>
+            </ul>
+
+            <div id="tabs-1">Music Content</div>
+            <div id="tabs-2">Videos Content</div>
+          </div>
+
+          <div class="tabs block">
+            <ul>
+              <li><a>Music</a></li>
+              <li class="is-active"><a>Videos</a></li>
+              <li><a>Documents</a></li>
+              <li><a>Pictures</a></li>
+            </ul>
+          </div>
+          <div class="block">
+            <div class="tab-content">Music Content</div>
+            <div class="tab-content is-block">Videos Content</div>
+            <div class="tab-content">Documents Content</div>
+            <div class="tab-content">Pictures Content</div>
+          </div>
+
+          <div id="tabFrame" class="block" style="background-color: #efefef; width: 300px; height: 150px">
+            <input type="radio" name="tabRadio" id="tab_1" checked="checked" />
+            <input type="radio" name="tabRadio" id="tab_2" />
+            <div class="tabTitle textCenter" style="padding: 0px 30px">
+              <label for="tab_1" id="tabTitle_1">Tab1</label>
+              <label for="tab_2" id="tabTitle_2" style="margin: 0px 10px">Tab2</label>
+            </div>
+
+            <div id="tabContent" style="padding: 80px 30px">
+              <div class="tabContent_1">
+                <label>tab_1</label>
+              </div>
+              <div class="tabContent_2">
+                <label>tab_2</label>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="tab-content">
+        <div class="tile is-ancestor">
+          <div class="tile is-vertical is-8">
+            <div class="tile">
+              <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-primary">
+                  <p class="title">Vertical...</p>
+                  <p class="subtitle">Top tile</p>
+                </article>
+                <article class="tile is-child notification is-warning">
+                  <p class="title">...tiles</p>
+                  <p class="subtitle">Bottom tile</p>
+                </article>
+              </div>
+              <div class="tile is-parent">
+                <article class="tile is-child notification is-info">
+                  <p class="title">Middle tile</p>
+                  <p class="subtitle">With an image</p>
+                  <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/640x480.png" />
+                  </figure>
+                </article>
+              </div>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-danger">
+                <p class="title">Wide tile</p>
+                <p class="subtitle">Aligned with the right tile</p>
+                <div class="content">
+                  <!-- Content -->
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-success">
+              <div class="content">
+                <p class="title">Tall tile</p>
+                <p class="subtitle">With even more content</p>
+                <div class="content">
+                  <!-- Content -->
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <section class="hero is-small is-primary has-text-centered">
+          <div class="hero-body">
+            <p class="title">Small hero</p>
+            <p class="subtitle">vCenter and hCenter</p>
+          </div>
+        </section>
+        <section class="container has-text-centered">
+          <div class="hero-body">
+            <p class="title">Small hero</p>
+            <p class="subtitle">vCenter and hCenter</p>
+          </div>
+        </section>
+        <section class="is-small is-primary" style="display: flex; align-items: center; justify-content: center; height: 50px; border: 1px solid">
+          <div class="">
+            <p>center: vanilla CSS（原生CSS）</p>
+          </div>
+        </section>
+        <section class="is-small is-primary is-flex is-align-items-center is-justify-content-center" style="height: 50px; border: 1px solid">
+          <div class="">
+            <p>center: bulma</p>
+          </div>
+        </section>
+        <nav class="level is-mobile">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Tweets</p>
+              <p class="title">3,456</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Following</p>
+              <p class="title">123</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Followers</p>
+              <p class="title">456K</p>
+            </div>
+          </div>
+        </nav>
+
+        <section class="section is-max-desktop block">
+          <div>
+            <h1 class="title">Hello World!</h1>
+            这是<i>一个斜体</i> 这是一个换行<br />
+            <p>这是一个段落</p>
+            <p class="subtitle">subtitle <strong>Bulma</strong>!</p>
+            <p>这是一个段落</p>
+          </div>
+        </section>
+
+        <div class="box">
+          <div class="columns">
+            <div class="column">
+              <p class="notification is-primary">First column</p>
+            </div>
+            <div class="column">
+              <p class="notification is-primary">Second column</p>
+            </div>
+            <div class="column">
+              <p class="notification is-primary">Third column</p>
+            </div>
+            <div class="column">
+              <p class="notification is-primary">Fourth column</p>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-one-fifth">
+              <p class="notification is-primary">1/5 width</p>
+            </div>
+            <div class="column is-2 is-centered">
+              <p class="notification is-primary">2/12 width</p>
+            </div>
+            <div class="column">
+              <p class="notification">Auto width</p>
+            </div>
+            <div class="column">
+              <p class="notification">Auto width</p>
+            </div>
+          </div>
+
+          <div class="columns is-mobile">
+            <div class="column is-half is-offset-one-quarter"></div>
+          </div>
+
+          <div class="columns is-mobile">
+            <div class="column is-three-fifths is-offset-one-fifth"></div>
+          </div>
+
+          <div class="columns is-mobile">
+            <div class="column is-4 is-offset-8"></div>
+          </div>
+
+          <div class="columns is-mobile">
+            <div class="column is-11 is-offset-1"></div>
+          </div>
+
+          <div class="columns">
+            <div class="column is-narrow">
+              <div class="box" style="width: 200px">
+                <p class="title is-5">Narrow column</p>
+                <p class="subtitle">This column is only 200px wide.</p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="box">
+                <p class="title is-5">Flexible column</p>
+                <p class="subtitle">This column will take up the remaining space available.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-mobile">
+            <div class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+              <code>is-three-quarters-mobile</code><br />
+              <code>is-two-thirds-tablet</code><br />
+              <code>is-half-desktop</code><br />
+              <code>is-one-third-widescreen</code><br />
+              <code>is-one-quarter-fullhd</code>
+            </div>
+            <div class="column">2</div>
+            <div class="column">3</div>
+            <div class="column">4</div>
+            <div class="column">5</div>
+          </div>
+
+          <div class="columns">
+            <div class="column">
+              <p class="bd-notification is-info">First column</p>
+              <div class="columns is-mobile">
+                <div class="column">
+                  <p class="bd-notification is-info">First nested column</p>
+                </div>
+                <div class="column">
+                  <p class="bd-notification is-info">Second nested column</p>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <p class="bd-notification is-danger">Second column</p>
+              <div class="columns is-mobile">
+                <div class="column is-half">
+                  <p class="bd-notification is-danger">50%</p>
+                </div>
+                <div class="column">
+                  <p class="bd-notification is-danger">Auto</p>
+                </div>
+                <div class="column">
+                  <p class="bd-notification is-danger">Auto</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="card block">
-        <header class="card-header">
-          <p class="card-header-title">Component</p>
-          <a href="#collapsible-card" data-action="collapse" class="card-header-icon" aria-label="more options">
-            <span class="icon">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </a>
-        </header>
-        <div id="collapsible-card" class="is-collapsible is-active">
-          <div class="card-content">
-            <div class="content">
-              this is a card <br />
-              has button
-            </div>
-          </div>
-          <footer class="card-footer">
-            <a href="#" class="card-footer-item">Save</a>
-            <a href="#" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
-          </footer>
-        </div>
-      </div>
-
-      <article class="panel is-primary block">
-        <p class="panel-heading block">Tabs</p>
-
-        <div id="tabsJQueryUI" class="is-centered is-boxed block">
-          <ul>
-            <li>
-              <a href="#tabs-1">
-                <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
-                <span>Drag me</span>
-              </a>
-            </li>
-            <li>
-              <a href="#tabs-2">
-                <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
-                <span>Videos</span>
-              </a>
-            </li>
-          </ul>
-
-          <div id="tabs-1">Music Content</div>
-          <div id="tabs-2">Videos Content</div>
-        </div>
-
-        <div class="tabs is-centered is-boxed">
-          <ul>
-            <li>
-              <a>
-                <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
-                <span>Music</span>
-              </a>
-            </li>
-            <li class="is-active">
-              <a>
-                <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
-                <span>Videos</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="block">
-          <div class="tab-content">Music Content</div>
-          <div class="tab-content is-block">Videos Content</div>
-        </div>
-
-        <div class="tabs block">
-          <ul>
-            <li><a>Music</a></li>
-            <li class="is-active"><a>Videos</a></li>
-            <li><a>Documents</a></li>
-            <li><a>Pictures</a></li>
-          </ul>
-        </div>
-        <div class="block">
-          <div class="tab-content">Music Content</div>
-          <div class="tab-content is-block">Videos Content</div>
-          <div class="tab-content">Documents Content</div>
-          <div class="tab-content">Pictures Content</div>
-        </div>
-
-        <div id="tabFrame" class="block" style="background-color: #efefef; width: 300px; height: 150px">
-          <input type="radio" name="tabRadio" id="tab_1" checked="checked" />
-          <input type="radio" name="tabRadio" id="tab_2" />
-          <div class="tabTitle textCenter" style="padding: 0px 30px">
-            <label for="tab_1" id="tabTitle_1">Tab1</label>
-            <label for="tab_2" id="tabTitle_2" style="margin: 0px 10px">Tab2</label>
-          </div>
-
-          <div id="tabContent" style="padding: 80px 30px">
-            <div class="tabContent_1">
-              <label>tab_1</label>
-            </div>
-            <div class="tabContent_2">
-              <label>tab_2</label>
-            </div>
-          </div>
-        </div>
-        <a class="panel-block is-active">
-          <span class="panel-icon">
-            <i class="fas fa-book" aria-hidden="true"></i>
-          </span>
-          bulma
-        </a>
-        <a class="panel-block">
-          <span class="panel-icon">
-            <i class="fas fa-book" aria-hidden="true"></i>
-          </span>
-          marksheet
-        </a>
-        <a class="panel-block"> github </a>
-      </article>
-
-      <!-- <button id="distort_btnDel" onclick="distort_btnDel()">删除</button> -->
-
-      <table class="table is-bordered has-text-centered">
-        <colgroup>
-          <col span="2" style="background-color: #0075ff" />
-          <col style="background-color: gray" />
-        </colgroup>
-        <tr>
-          <th>Grid1</th>
-          <th>Grid2</th>
-          <th>Grid3</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>hello world</td>
-          <td>2</td>
-        </tr>
-      </table>
-
-      <div class="box">
-        <div class="columns">
-          <div class="column">
-            <p class="notification is-primary">First column</p>
-          </div>
-          <div class="column">
-            <p class="notification is-primary">Second column</p>
-          </div>
-          <div class="column">
-            <p class="notification is-primary">Third column</p>
-          </div>
-          <div class="column">
-            <p class="notification is-primary">Fourth column</p>
-          </div>
-        </div>
-        <div class="columns">
-          <div class="column is-one-fifth">
-            <p class="notification is-primary">1/5 width</p>
-          </div>
-          <div class="column is-2">
-            <p class="notification is-primary">2/12 width</p>
-          </div>
-          <div class="column">
-            <p class="notification">Auto width</p>
-          </div>
-          <div class="column">
-            <p class="notification">Auto width</p>
-          </div>
+      <div class="tab-content">
+        <audio controls>
+          <source src="assets\music.mp3" type="audio/mpeg" />
+          您的浏览器不支持 audio 元素。
+        </audio>
+        <video width="320" height="240" controls>
+          <source src="assets\movie.ogg" type="video/ogg" />
+          您的浏览器不支持 HTML5 video 标签。
+        </video>
+        <div class="mt-6">
+          <webview src="https://www.electronjs.org/" style="display: inline-flex; width: 1000px; height: 700px"></webview>
         </div>
       </div>
     </div>
-    <div id="right">
-      <audio controls>
-        <source src="assets\music.mp3" type="audio/mpeg" />
-        您的浏览器不支持 audio 元素。
-      </audio>
-      <video width="320" height="240" controls>
-        <source src="assets\movie.ogg" type="video/ogg" />
-        您的浏览器不支持 HTML5 video 标签。
-      </video>
-      <div class="marginTopLarge">
-        <webview src="https://www.electronjs.org/" style="display: inline-flex; width: 580px; height: 350px"></webview>
-      </div>
-    </div>
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script> -->
     <script src="./renderer.js"></script>
   </body>

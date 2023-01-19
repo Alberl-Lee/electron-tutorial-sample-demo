@@ -114,6 +114,23 @@ $primary-invert: $pink-invert;
   -webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
 }
 
+.red {
+  color: #faddde;
+  border: solid 1px #980c10;
+  background: #d81b21;
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
+}
+
+.red:hover {
+  background: #b61318;
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115');
+}
+
+.red:active {
+  color: #de898c;
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24');
+}
+
 #left,
 #right {
   background-color: #e8e8e8;
