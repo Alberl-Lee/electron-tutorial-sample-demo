@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
 function createWindow() {
@@ -12,6 +12,16 @@ function createWindow() {
       webviewTag: true, //启用<webview>标签
     },
   });
+
+  //   mainWindow = new BrowserWindow({
+  //     width: 800,
+  //     height: 600,
+  //     frame:false,
+  //     transparent: true // 窗口透明
+  // });
+
+  // // 鼠标穿透透明的部分
+  // mainWindow.setIgnoreMouseEvents(true);
 
   // and load the index.html of the app.
   mainWindow.loadFile("index.html");

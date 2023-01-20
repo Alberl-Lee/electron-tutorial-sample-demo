@@ -6,6 +6,9 @@
  * to expose Node.js functionality from the main process.
  */
 
+// import { three3dCube } from "./three3dCube.js";
+// import { three3dTiger } from "./three3dTiger.js";
+
 console.log("hello world!");
 
 document.body.addEventListener("click", () => {
@@ -189,6 +192,14 @@ tabs.find(".ui-tabs-nav").sortable({
   },
 });
 
+bulmaCollapsible.attach();
+// bulmaCarousel.attach();
+// bulmaCarousel.attach({
+//   slidesToScroll: 1,
+//   slidesToShow: 3,
+//   // autoplay:true
+// });
+
 // 可拖拽排序  要加上class="group"属性，并且改变div布局，不兼容bluma的css,但是包装一下bluma的应该可以
 // 搞定了，调整下函数调用顺序，把accordion({ icons: icons });放到最后，然后removeClass("ui-icon");
 $("#accordion2")
@@ -224,8 +235,20 @@ var icons = {
 // $("#accordion2").accordion(); // 默认样式，不可拖拽排序
 // $("#accordion2").accordion({ icons: icons }); // 启动后,就不能改图标了
 // $("#accordion2").accordion("option", "icons", icons); // 启动后,也可以改图标
-$("#accordion2").accordion({ icons: icons }); // 这句必须放到最后，否则样式会混乱
+
+$("#accordion2").accordion({
+  icons: icons,
+  collapsible: true, // 是否全部可折叠（此时点击自身也可折叠），默认为false（此时点击自身只可展开，不可折叠）
+}); // 这句必须放到最后，否则样式会混乱
 $(".ui-icon").removeClass("ui-icon"); // 删除JQuery UI的所有图标，这样bulma的图标才能生效
+
+// one代表只进来一次，也就是初始化的时候进来一次就行了
+$("#Tabs").one("click", function () {
+  $("#accordion2").accordion("option", "heightStyle", "auto");
+  $("#accordion2").accordion("refresh");
+
+  bulmaCollapsible.attach();
+});
 
 // bulmaAccordion.attach("#accordion3"); // accordions now contains an array of all Accordion instances
 // bulmaTagsinput.attach("#tagsinput");
@@ -256,14 +279,6 @@ BulmaTagsInput.attach();
 //   slidesToShow: 4,
 // });
 
-bulmaCollapsible.attach();
-// bulmaCarousel.attach();
-// bulmaCarousel.attach({
-//   slidesToScroll: 1,
-//   slidesToShow: 3,
-//   // autoplay:true
-// });
-
 bulmaCarousel.attach("#carousel-demo", {
   slidesToScroll: 1,
   slidesToShow: 4,
@@ -277,3 +292,10 @@ bulmaCarousel.attach("#carousel-demo", {
 // if (element && element.bulmaCarousel) {
 //   // bulmaCarousel instance is available as element.bulmaCarousel
 // }
+
+// 3D 老虎SVG
+three3dTiger.init();
+
+// 3D 正方体动画
+three3dCube.init();
+three3dCube.animate();

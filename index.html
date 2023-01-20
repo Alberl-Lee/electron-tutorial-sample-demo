@@ -19,6 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
     <!-- <script src="thirdparty/jquery/jquery.js"></script> -->
     <script src="thirdparty/jquery-ui/jquery-ui.js"></script>
+
     <script src="thirdparty/bulma-extensions/bulma-extensions.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script> -->
     <script src="thirdparty/bulma-extensions/bulma-collapsible.min.js"></script>
@@ -48,11 +49,13 @@
             <span class="icon is-small">
               <i class="fas fa-film" aria-hidden="true"></i>
             </span>
-            <span>Table</span>
+            <span>SVG</span>
           </a>
         </li>
 
-        <li><a> Tabs </a></li>
+        <li><a> 3D </a></li>
+        <li><a> Table </a></li>
+        <li id="Tabs"><a> Tabs </a></li>
         <li><a> Layout </a></li>
 
         <li>
@@ -70,61 +73,6 @@
       <div class="tab-content is-block">
         <!-- level 子元素水平间隔对齐，子元素加上 level-item后，会强制子元素水平排列，不换行 -->
         <!-- 窗口调小时，就会变成垂直布局，加上is-mobile就一直保持水平布局 -->
-        <div class="level is-mobile">
-          <!-- Left side -->
-          <div class="level-left">
-            <div class="level-item">
-              <div class="container">
-                <span class="fas fa-camera" style="--fa-li-width: 4em"></span>
-                <span style="font-size: 2em; color: Dodgerblue">
-                  <i class="fa-solid fa-camera"></i>
-                </span>
-                <!-- 各种icon组合 -->
-                <span class="icon is-large">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-camera fa-stack-1x"></i>
-                    <i class="fas fa-ban fa-stack-2x has-text-danger"></i>
-                  </span>
-                </span>
-
-                <i class="fa-solid fa-caret-down"></i>
-                <i class="fa-solid fa-caret-right"></i>
-
-                <span class="bulma-arrow-mixin"></span>
-              </div>
-            </div>
-            <div class="level-item">
-              <img height="64" width="64" src="assets/electron.png" />
-            </div>
-            <div class="level-item">
-              <div class="box">
-                <!-- has-text-centered 让内容垂直水平居中 -->
-                <div class="has-text-centered container">
-                  <img height="64" width="64" src="assets/electron.png" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right side -->
-          <div class="level-right">
-            <div class="level-item">
-              <span>SVG : &nbsp;</span>
-              <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
-                <path
-                  fill-rule="evenodd"
-                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
-                ></path>
-              </svg>
-            </div>
-            <div class="level-item">
-              <svg width="50" height="50">
-                <circle cx="25" cy="25" r="20" stroke="black" stroke-width="1" fill="hsl(204, 86%, 53%)" />
-                抱歉，您的浏览器不支持嵌入式 SVG。
-              </svg>
-            </div>
-          </div>
-        </div>
 
         <div class="level is-mobile">
           <div class="level-item">
@@ -405,29 +353,331 @@
             </footer>
           </div>
         </div>
+
+        <div class="level is-mobile">
+          <!-- Left side -->
+          <div class="level-left">
+            <div class="level-item">
+              <div class="container">
+                <span class="fas fa-camera" style="--fa-li-width: 4em"></span>
+                <span style="font-size: 2em; color: Dodgerblue">
+                  <i class="fa-solid fa-camera"></i>
+                </span>
+                <!-- 各种icon组合 -->
+                <span class="icon is-large">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-camera fa-stack-1x"></i>
+                    <i class="fas fa-ban fa-stack-2x has-text-danger"></i>
+                  </span>
+                </span>
+
+                <i class="fa-solid fa-caret-down"></i>
+                <i class="fa-solid fa-caret-right"></i>
+              </div>
+            </div>
+            <div class="level-item">
+              <div class="container mr-2">
+                <span class="bulma-arrow-mixin"></span>
+              </div>
+            </div>
+            <div class="level-item">
+              <img height="64" width="64" src="assets/electron.png" />
+            </div>
+            <div class="level-item">
+              <div class="box">
+                <!-- has-text-centered 让内容垂直水平居中 -->
+                <div class="has-text-centered container">
+                  <img height="64" width="64" src="assets/electron.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side -->
+          <div class="level-right">
+            <div class="level-item">
+              <span>SVG : &nbsp;</span>
+              <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+                <path
+                  fill-rule="evenodd"
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                ></path>
+              </svg>
+            </div>
+            <div class="level-item">
+              <svg width="50" height="50">
+                <circle cx="25" cy="25" r="20" stroke="black" stroke-width="1" fill="hsl(204, 86%, 53%)" />
+                抱歉，您的浏览器不支持嵌入式 SVG。
+              </svg>
+
+              <!-- <object>影响右键菜单的弹出，而且会显示在容器的最左边，而不是按顺序排列
+                而 <img>没有这些问题 -->
+              <!-- <object width="50" height="50" data="assets\svg\monarch-by-Gordon_Johnson_USA.svg" type="image/svg+xml"></object> -->
+              <img width="128" height="128" src="assets\svg\monarch-by-Gordon_Johnson_USA.svg" />
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="tab-content" style="border: 1px solid">Animate Content</div>
+
       <div class="tab-content">
-        <table class="table is-bordered has-text-centered">
-          <colgroup>
-            <col span="2" style="background-color: #0075ff" />
-            <col style="background-color: gray" />
-          </colgroup>
-          <tr>
-            <th>Grid1</th>
-            <th>Grid2</th>
-            <th>Grid3</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>hello world</td>
-            <td>2</td>
-          </tr>
-        </table>
+        <div class="notification is-primary">
+          <p class="title">They are not image files, They are SVG files</p>
+        </div>
+
+        <div class="columns is-mobile is-primary">
+          <div class="column">
+            <img src="assets\svg\tiger.svg" />
+          </div>
+          <div class="column">
+            <img src="assets\svg\monarch-by-Gordon_Johnson_USA.svg" />
+            <!-- <a href="assets\svg\monarch-by-Gordon_Johnson_USA.svg">查看完整SVG文件</a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content">
+        <div class="level is-mobile">
+          <!-- Left side -->
+          <div class="level-left">
+            <div class="level-item">
+              <div class="container">
+                <div id="three3dCube" style="border: 1px solid"></div>
+              </div>
+            </div>
+            <!-- Right side -->
+            <div class="level-right">
+              <div class="level-item">
+                <div class="container">
+                  <div class="level is-mobile">
+                    <div class="hero-body notification is-primary">
+                      <p class="subtitle">1. Drag or scroll the tiger</p>
+                      <p class="subtitle">2. Click right panel</p>
+                    </div>
+                    <div id="three3dTigerUI"></div>
+                  </div>
+                  <div id="three3dTiger"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content">
+        <div class="columns is-mobile">
+          <div class="column">
+            <table class="table is-bordered is-striped is-narrow is-hoverable">
+              <thead>
+                <tr>
+                  <th>One</th>
+                  <th>Two</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Three</td>
+                  <td>Four</td>
+                </tr>
+                <tr>
+                  <td>Five</td>
+                  <td>Six</td>
+                </tr>
+                <tr>
+                  <td>Seven</td>
+                  <td>Eight</td>
+                </tr>
+                <tr>
+                  <td>Nine</td>
+                  <td>Ten</td>
+                </tr>
+                <tr>
+                  <td>Eleven</td>
+                  <td>Twelve</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="column">
+            <table class="table is-hoverable">
+              <thead>
+                <tr>
+                  <th>One</th>
+                  <th>Two</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Three</td>
+                  <td>Four</td>
+                </tr>
+                <tr>
+                  <td>Five</td>
+                  <td>Six</td>
+                </tr>
+                <tr>
+                  <td>Seven</td>
+                  <td>Eight</td>
+                </tr>
+                <tr>
+                  <td>Nine</td>
+                  <td>Ten</td>
+                </tr>
+                <tr>
+                  <td>Eleven</td>
+                  <td>Twelve</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="column">
+            <table class="table is-bordered has-text-centered">
+              <colgroup>
+                <col span="2" style="background-color: #0075ff" />
+                <col style="background-color: gray" />
+              </colgroup>
+              <tr>
+                <th>Grid1</th>
+                <th>Grid2</th>
+                <th>Grid3</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>hello Bulma</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Bulma CSS</td>
+                <td>2</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="columns">
+          <table class="table">
+            <thead>
+              <tr>
+                <th><abbr title="Position">Pos</abbr></th>
+                <th>Team</th>
+                <th><abbr title="Played">Pld</abbr></th>
+                <th><abbr title="Won">W</abbr></th>
+                <th><abbr title="Drawn">D</abbr></th>
+                <th><abbr title="Lost">L</abbr></th>
+                <th><abbr title="Goals for">GF</abbr></th>
+                <th><abbr title="Goals against">GA</abbr></th>
+                <th><abbr title="Goal difference">GD</abbr></th>
+                <th><abbr title="Points">Pts</abbr></th>
+                <th>Qualification or relegation</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th><abbr title="Position">Pos</abbr></th>
+                <th>Team</th>
+                <th><abbr title="Played">Pld</abbr></th>
+                <th><abbr title="Won">W</abbr></th>
+                <th><abbr title="Drawn">D</abbr></th>
+                <th><abbr title="Lost">L</abbr></th>
+                <th><abbr title="Goals for">GF</abbr></th>
+                <th><abbr title="Goals against">GA</abbr></th>
+                <th><abbr title="Goal difference">GD</abbr></th>
+                <th><abbr title="Points">Pts</abbr></th>
+                <th>Qualification or relegation</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr>
+                <th>1</th>
+                <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester City</a> <strong>(C)</strong></td>
+                <td>38</td>
+                <td>23</td>
+                <td>12</td>
+                <td>3</td>
+                <td>68</td>
+                <td>36</td>
+                <td>+32</td>
+                <td>81</td>
+                <td>
+                  Qualification for the
+                  <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage" title="2016–17 UEFA Champions League">Champions League group stage</a>
+                </td>
+              </tr>
+              <tr>
+                <th>2</th>
+                <td><a href="https://en.wikipedia.org/wiki/Arsenal_F.C." title="Arsenal F.C.">Arsenal</a></td>
+                <td>38</td>
+                <td>20</td>
+                <td>11</td>
+                <td>7</td>
+                <td>65</td>
+                <td>36</td>
+                <td>+29</td>
+                <td>71</td>
+                <td>
+                  Qualification for the
+                  <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage" title="2016–17 UEFA Champions League">Champions League group stage</a>
+                </td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td><a href="https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C." title="Tottenham Hotspur F.C.">Tottenham Hotspur</a></td>
+                <td>38</td>
+                <td>19</td>
+                <td>13</td>
+                <td>6</td>
+                <td>69</td>
+                <td>35</td>
+                <td>+34</td>
+                <td>70</td>
+                <td>
+                  Qualification for the
+                  <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage" title="2016–17 UEFA Champions League">Champions League group stage</a>
+                </td>
+              </tr>
+              <tr class="is-selected">
+                <th>4</th>
+                <td><a href="https://en.wikipedia.org/wiki/Manchester_City_F.C." title="Manchester City F.C.">Manchester City</a></td>
+                <td>38</td>
+                <td>19</td>
+                <td>9</td>
+                <td>10</td>
+                <td>71</td>
+                <td>41</td>
+                <td>+30</td>
+                <td>66</td>
+                <td>
+                  Qualification for the
+                  <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Play-off_round" title="2016–17 UEFA Champions League"
+                    >Champions League play-off round</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th>5</th>
+                <td><a href="https://en.wikipedia.org/wiki/Manchester_United_F.C." title="Manchester United F.C.">Manchester United</a></td>
+                <td>38</td>
+                <td>19</td>
+                <td>9</td>
+                <td>10</td>
+                <td>49</td>
+                <td>35</td>
+                <td>+14</td>
+                <td>66</td>
+                <td>
+                  Qualification for the
+                  <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Europa_League#Group_stage" title="2016–17 UEFA Europa League">Europa League group stage</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="tab-content">
-        <div id="accordion_first">
+        <div id="accordion_first" class="mb-6">
           <article class="message">
             <div class="message-header">
               <p>Question 1 <a href="#collapsible-message-accordion-1" class="is-active" data-action="collapse">Collapse/Expand</a></p>
@@ -466,9 +716,10 @@
           </article>
         </div>
 
-        <section id="accordion2">
+        <hr />
+        <section id="accordion2" class="mb-6 mt-6">
           <div class="group">
-            <h3 class="button is-primary is-outlined">&nbsp;Section 1： Drag me to sort 拖拽我 可以排序</h3>
+            <h3 class="button is-primary is-outlined">&nbsp;Section 1： Drag me to sort 【拖拽我 可以排序】</h3>
             <div>
               <p>
                 Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a
@@ -478,16 +729,16 @@
           </div>
           <div class="group">
             <h3 class="button is-primary">&nbsp;Section 2</h3>
-            <div>
+            <section>
               <p>
                 Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus
                 interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.
               </p>
-            </div>
+            </section>
           </div>
           <div class="group">
             <h3>Section 3</h3>
-            <div>
+            <section>
               <p>
                 Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus
                 pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
@@ -497,7 +748,7 @@
                 <li>List item two</li>
                 <li>List item three</li>
               </ul>
-            </div>
+            </section>
           </div>
           <div class="group">
             <h3 class="button is-warning">Section 4</h3>
@@ -514,7 +765,8 @@
           </div>
         </section>
 
-        <article class="panel is-primary block">
+        <hr />
+        <article class="panel is-primary block mb-6 mt-6">
           <p class="panel-heading block">Tabs</p>
 
           <div id="tabsJQueryUI" class="is-centered is-boxed block">
@@ -522,7 +774,7 @@
               <li>
                 <a href="#tabs-1">
                   <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
-                  <span>Drag me</span>
+                  <span>Drag me 【拖拽我 可以排序】</span>
                 </a>
               </li>
               <li>
@@ -573,7 +825,8 @@
       </div>
 
       <div class="tab-content">
-        <div class="tile is-ancestor">
+        <!--  is-mobile对tile无效，不知道是bug，还是设计原因，要自己找下改哪里 -->
+        <div class="tile is-ancestor is-mobile">
           <div class="tile is-vertical is-8">
             <div class="tile">
               <div class="tile is-parent is-vertical">
@@ -619,18 +872,20 @@
           </div>
         </div>
 
-        <section class="hero is-small is-primary has-text-centered">
+        <hr class="mb-0" />
+        <section class="hero is-small has-text-centered">
           <div class="hero-body">
             <p class="title">Small hero</p>
             <p class="subtitle">vCenter and hCenter</p>
           </div>
         </section>
         <section class="container has-text-centered">
-          <div class="hero-body">
-            <p class="title">Small hero</p>
+          <div class="hero-body notification is-primary">
+            <p class="title">Container</p>
             <p class="subtitle">vCenter and hCenter</p>
           </div>
         </section>
+
         <section class="is-small is-primary" style="display: flex; align-items: center; justify-content: center; height: 50px; border: 1px solid">
           <div class="">
             <p>center: vanilla CSS（原生CSS）</p>
@@ -662,7 +917,7 @@
           </div>
         </nav>
 
-        <section class="section is-max-desktop block">
+        <section class="section is-max-desktop block has-text-centered">
           <div>
             <h1 class="title">Hello World!</h1>
             这是<i>一个斜体</i> 这是一个换行<br />
@@ -673,7 +928,7 @@
         </section>
 
         <div class="box">
-          <div class="columns">
+          <div class="columns is-mobile">
             <div class="column">
               <p class="notification is-primary">First column</p>
             </div>
@@ -687,7 +942,7 @@
               <p class="notification is-primary">Fourth column</p>
             </div>
           </div>
-          <div class="columns">
+          <div class="columns is-mobile">
             <div class="column is-one-fifth">
               <p class="notification is-primary">1/5 width</p>
             </div>
@@ -703,22 +958,34 @@
           </div>
 
           <div class="columns is-mobile">
-            <div class="column is-half is-offset-one-quarter"></div>
+            <div class="column is-4 is-offset-8">
+              <p class="notification is-primary">
+                <code class="html">is-4</code><br />
+                <code class="html">is-offset-8</code>
+              </p>
+            </div>
           </div>
-
           <div class="columns is-mobile">
-            <div class="column is-three-fifths is-offset-one-fifth"></div>
+            <div class="column is-11 is-offset-1">
+              <p class="notification is-primary">
+                <code class="html">is-11</code><br />
+                <code class="html">is-offset-1</code>
+              </p>
+            </div>
+          </div>
+          <!--  is-centered 水平居中column -->
+          <div class="columns is-mobile is-centered">
+            <div class="column is-half">
+              <p class="notification is-primary">
+                <code class="html">is-half</code><br />
+                <code class="html">【is-centered】</code>
+              </p>
+            </div>
           </div>
 
-          <div class="columns is-mobile">
-            <div class="column is-4 is-offset-8"></div>
-          </div>
-
-          <div class="columns is-mobile">
-            <div class="column is-11 is-offset-1"></div>
-          </div>
-
-          <div class="columns">
+          <!-- is-gapless 表示不留空隙 效果等于 is-variable is-0 
+               is-vcentered 垂直居中column-->
+          <div class="columns is-mobile is-gapless is-vcentered">
             <div class="column is-narrow">
               <div class="box" style="width: 200px">
                 <p class="title is-5">Narrow column</p>
@@ -727,51 +994,71 @@
             </div>
             <div class="column">
               <div class="box">
-                <p class="title is-5">Flexible column</p>
+                <p class="title is-5">Flexible column【 is-vcentered is-gapless 】</p>
                 <p class="subtitle">This column will take up the remaining space available.</p>
               </div>
             </div>
           </div>
 
-          <div class="columns is-mobile">
-            <div class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
-              <code>is-three-quarters-mobile</code><br />
-              <code>is-two-thirds-tablet</code><br />
-              <code>is-half-desktop</code><br />
-              <code>is-one-third-widescreen</code><br />
-              <code>is-one-quarter-fullhd</code>
-            </div>
-            <div class="column">2</div>
-            <div class="column">3</div>
-            <div class="column">4</div>
-            <div class="column">5</div>
-          </div>
-
-          <div class="columns">
+          <div class="columns is-variable is-1">
             <div class="column">
-              <p class="bd-notification is-info">First column</p>
+              <p class="notification is-info">First column : Nesting（嵌套）</p>
               <div class="columns is-mobile">
                 <div class="column">
-                  <p class="bd-notification is-info">First nested column</p>
+                  <p class="notification is-info">First nested column</p>
                 </div>
                 <div class="column">
-                  <p class="bd-notification is-info">Second nested column</p>
+                  <p class="notification is-info">Second nested column</p>
                 </div>
               </div>
             </div>
-            <div class="column">
-              <p class="bd-notification is-danger">Second column</p>
+            <div class="column has-text-centered">
+              <p class="notification is-danger">Second column</p>
               <div class="columns is-mobile">
                 <div class="column is-half">
-                  <p class="bd-notification is-danger">50%</p>
+                  <p class="notification is-danger">50%</p>
+                </div>
+                <div class="column has-text-centered">
+                  <p class="notification is-danger">Auto</p>
                 </div>
                 <div class="column">
-                  <p class="bd-notification is-danger">Auto</p>
-                </div>
-                <div class="column">
-                  <p class="bd-notification is-danger">Auto</p>
+                  <p class="notification is-danger">Auto</p>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="columns is-multiline is-mobile">
+            <div class="column is-one-quarter">
+              <p class="notification is-primary">
+                <code>【is-multiline】: </code>
+                <br />
+                <code class="html">auto change to multiline column</code>
+              </p>
+            </div>
+            <div class="column is-one-quarter">
+              <p class="notification is-primary"><code>is-one-quarter</code></p>
+            </div>
+            <div class="column is-one-quarter">
+              <p class="notification is-primary"><code>1/4</code></p>
+            </div>
+            <div class="column is-one-quarter">
+              <p class="notification is-primary"><code>1/4</code></p>
+            </div>
+            <div class="column is-half">
+              <p class="notification is-primary"><code>is-half</code></p>
+            </div>
+            <div class="column is-one-quarter">
+              <p class="notification is-primary"><code>is-one-quarter</code></p>
+            </div>
+            <div class="column is-one-quarter">
+              <p class="notification is-primary"><code>is-one-quarter</code></p>
+            </div>
+            <div class="column is-one-quarter">
+              <p class="notification is-primary"><code>is-one-quarter</code></p>
+            </div>
+            <div class="column">
+              <p class="notification is-primary">Auto</p>
             </div>
           </div>
         </div>
@@ -793,5 +1080,6 @@
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script> -->
     <script src="./renderer.js"></script>
+    <!-- <script type="module" src="./renderer.js"></script> -->
   </body>
 </html>
