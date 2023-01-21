@@ -15,6 +15,11 @@ document.body.addEventListener("click", () => {
   console.log("hello vscode!");
 });
 
+// // 已在css文件设置
+// $("html").css({
+//   "overflow-y": "auto", // 自动隐藏垂直滚动条
+// });
+
 function showMenu(env) {
   env.preventDefault(); // 禁止浏览器的默认菜单
   var e = env || window.event; // 兼容event事件
@@ -165,14 +170,16 @@ $(".message .delete").click(function (e) {
   $(this).parents(".message").remove();
 });
 
-// 用JQuery自己处理tabs
+// 用JQuery自己处理tabs的click事件
 $(".tabs>ul>li").click(function (e) {
-  e.preventDefault();
+  // e.preventDefault();
   $(this).addClass("is-active").siblings().removeClass("is-active");
   $(this).parents(".tabs").next().children().eq($(this).index()).addClass("is-block").siblings().removeClass("is-block");
+  // 这里移除和添加了is-block，所以animate动画才会响应，相当于先隐藏后，再重新显示了。 .is-block {  display: block !important; }
 });
 
 // JQuery UI现成的tabs。 但是跟bulma不兼容，内容是放到tabs里面，但bulma是跟tabs同级。所以这个tabs不能融合只能二选一，显然风格更重要，自己再用上面的js就行了
+// 把上面的bulma js代码改了，就可以跟JQuery UI兼容了 $(this).parents(".tabs").next().
 var tabs = $("#tabsJQueryUI").tabs();
 // tabs可拖拽
 var previouslyFocused = false;
@@ -243,7 +250,7 @@ $("#accordion2").accordion({
 $(".ui-icon").removeClass("ui-icon"); // 删除JQuery UI的所有图标，这样bulma的图标才能生效
 
 // one代表只进来一次，也就是初始化的时候进来一次就行了
-$("#Tabs").one("click", function () {
+$("#tabTabs").one("click", function () {
   $("#accordion2").accordion("option", "heightStyle", "auto");
   $("#accordion2").accordion("refresh");
 
@@ -292,6 +299,28 @@ bulmaCarousel.attach("#carousel-demo", {
 // if (element && element.bulmaCarousel) {
 //   // bulmaCarousel instance is available as element.bulmaCarousel
 // }
+
+let mapGridBtn = {
+  btnGridChrome: "Chrome.exe",
+  btnGridDiskC: "C:\\Program Files",
+  btnGridCmd: "cmd.exe",
+  btnGridCmd: "calc.exe",
+  btnGridNotepad: "notepad.exe",
+  btnGridURL: "https://bulma.io/documentation/elements/button/",
+};
+
+var shellCache = null;
+$(".blk-btn-group  button").click(function (e) {
+  let id = $(this).attr("id");
+  if (undefined == id || "" == id) return;
+
+  if (!shellCache) {
+    const { shell } = require("electron");
+    shellCache = shell;
+  }
+
+  shellCache.openPath(mapGridBtn[id]);
+});
 
 // 3D 老虎SVG
 three3dTiger.init();

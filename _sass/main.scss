@@ -31,6 +31,12 @@ $primary-invert: $pink-invert;
 //   background-color: $blue;
 // }
 
+html {
+  // overflow-x: auto,
+  overflow-y: auto; // 自动隐藏垂直滚动条 ，加!important 可以设置为高优先级，比其他的设置优先
+  // overflow: hidden, // 强制隐藏滚动条
+}
+
 .bulma-arrow-mixin {
   @include arrow(black);
 }
@@ -118,17 +124,17 @@ $primary-invert: $pink-invert;
   color: #faddde;
   border: solid 1px #980c10;
   background: #d81b21;
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
+  // filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
 }
 
 .red:hover {
   background: #b61318;
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115');
+  // filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115');
 }
 
 .red:active {
   color: #de898c;
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24');
+  // filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24');
 }
 
 #left,
@@ -225,4 +231,9 @@ $primary-invert: $pink-invert;
   border-right-color: transparent;
   border-bottom-color: transparent;
   cursor: pointer;
+}
+
+.blk-large-btn-square {
+  height: 128px;
+  width: 128px;
 }

@@ -1,24 +1,4 @@
 @charset "UTF-8";
-/*
-// 1. Import the initial variables
-@import "../node_modules/bulma/sass/utilities/initial-variables";
-
-// 2. Set your own initial variables
-// Update the blue shade, used for links
-$blue: #06bcef;
-// Add pink and its invert
-$pink: #ff8080;
-$pink-invert: #fff;
-// Update the sans-serif font family
-$family-sans-serif: "Helvetica", "Arial", sans-serif;
-
-// 3. Set the derived variables
-// Use the new pink as the primary color
-$primary: $pink;
-$primary-invert: $pink-invert;
-
-// 4. Import the rest of Bulma
-*/
 /*! bulma.io v0.9.4 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
 .button, .input, .textarea, .select select, .file-cta,
@@ -7897,6 +7877,29 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
 
+/*
+// 1. Import the initial variables
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+// 2. Set your own initial variables
+// Update the blue shade, used for links
+$blue: #06bcef;
+// Add pink and its invert
+$pink: #ff8080;
+$pink-invert: #fff;
+// Update the sans-serif font family
+$family-sans-serif: "Helvetica", "Arial", sans-serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $pink;
+$primary-invert: $pink-invert;
+
+// 4. Import the rest of Bulma
+*/
+html {
+  overflow-y: auto; }
+
 .bulma-arrow-mixin {
   border: 3px solid black;
   border-radius: 2px;
@@ -7989,6 +7992,68 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   cursor: pointer;
   pointer-events: auto; }
 
+.pointer-events-none {
+  pointer-events: none; }
+
+.absoluteFull {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px; }
+
+.textCenter {
+  text-align: center; }
+
+.childToCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.childToVCenter {
+  display: flex;
+  align-items: center; }
+
+.vCenter {
+  vertical-align: middle; }
+
+.textOverFlow {
+  word-break: normal;
+  width: auto;
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.autoBreak {
+  /* 
+  自动变成多行文本，并且超出后变成省略号 
+  纯汉字有效，部分英文数字也行，英文太多就不对了
+  */
+  width: 100%;
+  /* height: 100%; */
+  text-overflow: ellipsis;
+  /* background: greenyellow; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  /*-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：
+  display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+  -webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/ }
+
+.red {
+  color: #faddde;
+  border: solid 1px #980c10;
+  background: #d81b21; }
+
+.red:hover {
+  background: #b61318; }
+
+.red:active {
+  color: #de898c; }
+
 #left,
 #right {
   background-color: #e8e8e8;
@@ -8023,9 +8088,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   line-height: 40px;
   width: 70px;
   height: 40px; }
-
-.textCenter {
-  text-align: center; }
 
 .tabTitle label:hover {
   background: #e8e8e8; }
@@ -8068,3 +8130,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   border-right-color: transparent;
   border-bottom-color: transparent;
   cursor: pointer; }
+
+.blk-large-btn-square {
+  height: 128px;
+  width: 128px; }

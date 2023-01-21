@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'" /> -->
+
+    <!-- 第三方CSS -->
     <link rel="stylesheet" type="text/css" href="thirdparty/jquery-ui/jquery-ui.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" />
@@ -14,10 +16,20 @@
     <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-tooltip.css" />
     <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-tagsinput.css" />
     <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="thirdparty/animate.css" />
+
+    <!-- 本项目CSS -->
     <link href="css/main.css" rel="stylesheet" />
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
-    <!-- <script src="thirdparty/jquery/jquery.js"></script> -->
+    <!-- 第三方js -->
+    <script>
+      if (typeof module === "object") {
+        window.module = module;
+        module = undefined;
+      }
+    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script> -->
+    <script src="thirdparty/jquery/jquery.js"></script>
     <script src="thirdparty/jquery-ui/jquery-ui.js"></script>
 
     <script src="thirdparty/bulma-extensions/bulma-extensions.js"></script>
@@ -25,7 +37,11 @@
     <script src="thirdparty/bulma-extensions/bulma-collapsible.min.js"></script>
     <script src="thirdparty/bulma-extensions/bulma-tagsinput.js"></script>
     <script src="thirdparty/bulma-extensions/bulma-carousel.js"></script>
+    <script>
+      if (window.module) module = window.module;
+    </script>
 
+    <!-- 本项目js -->
     <title>Electron demo - by 中国Alberl</title>
   </head>
   <body oncontextmenu="showMenu(event)">
@@ -37,7 +53,7 @@
             <span>&nbsp;Control</span>
           </a>
         </li>
-        <li>
+        <li id="tabAnimate">
           <a>
             <!-- icon动画 fa-spin是旋转动画-->
             <i class="fa-brands fa-github fa-lg fa-spin"></i>
@@ -55,7 +71,8 @@
 
         <li><a> 3D </a></li>
         <li><a> Table </a></li>
-        <li id="Tabs"><a> Tabs </a></li>
+        <li id="tabTabs"><a> Tabs </a></li>
+        <li><a> System </a></li>
         <li><a> Layout </a></li>
 
         <li>
@@ -70,7 +87,7 @@
 
     <div>
       <!-- <div class="tab-content is-block" style="height: 150px; border: 1px solid">Control Content</div> -->
-      <div class="tab-content is-block">
+      <div class="tab-content">
         <!-- level 子元素水平间隔对齐，子元素加上 level-item后，会强制子元素水平排列，不换行 -->
         <!-- 窗口调小时，就会变成垂直布局，加上is-mobile就一直保持水平布局 -->
 
@@ -121,7 +138,7 @@
 
         <div class="block">
           <div class="level is-mobile">
-            <button>button</button>
+            <button>Right click</button>
             <button class="button is-small">bluma</button>
             <button class="button">
               <span class="icon">
@@ -419,7 +436,42 @@
         </div>
       </div>
 
-      <div class="tab-content" style="border: 1px solid">Animate Content</div>
+      <div class="tab-content has-text-centered">
+        <div class="level is-mobile mb-6">
+          <h1 class="animate__bounce animate__slower animate__animated animate__infinite">animate</h1>
+          <button class="button is-small animate__bounce animate__animated animate__repeat-3 animate__delay-2s" style="--animate-duration: 10s">animate</button>
+          <button class="button is-small animate__rubberBand animate__animated animate__infinite">animate</button>
+        </div>
+
+        <!-- is-variable is-8按钮间隔8个宽度 -->
+        <div class="columns is-multiline is-mobile is-variable is-8">
+          <div class="column">
+            <button class="button is-small animate__fadeIn animate__slower animate__delay-3s animate__animated animate__infinite">animate</button>
+          </div>
+          <div class="column">
+            <button class="button is-small animate__fadeInLeft animate__slower animate__animated animate__infinite">animate</button>
+          </div>
+
+          <div class="column">
+            <button class="button is-small animate__flip animate__animated animate__infinite">animate</button>
+          </div>
+
+          <div class="column">
+            <button class="button is-small is-focused animate__backInDown animate__animated animate__infinite">animate</button>
+          </div>
+        </div>
+
+        <div class="columns is-mobile">
+          <div class="column">
+            <button class="button is-small animate__rotateIn animate__animated animate__infinite">animate</button>
+          </div>
+          <div class="column" style="overflow: hidden; height: 220px">
+            <!-- animate__hinge效果会导致全局滚动条一直出现和关闭，需要设置一直不出现滚动条，或者js控制  overflow: hidden、 auto 切换
+              或者直接把本元素设置为overflow: hidden; 但是这样的话，元素就不能掉到窗口的底部，掉到本元素的底部就会消失，所以设置一下高度 height: 220px，方便观察效果 -->
+            <button class="button is-small is-focused animate__hinge animate__animated animate__infinite">animate</button>
+          </div>
+        </div>
+      </div>
 
       <div class="tab-content">
         <div class="notification is-primary">
@@ -677,47 +729,7 @@
         </div>
       </div>
       <div class="tab-content">
-        <div id="accordion_first" class="mb-6">
-          <article class="message">
-            <div class="message-header">
-              <p>Question 1 <a href="#collapsible-message-accordion-1" class="is-active" data-action="collapse">Collapse/Expand</a></p>
-            </div>
-            <div id="collapsible-message-accordion-1" class="is-active message-body is-collapsible" data-parent="accordion_first">
-              <div class="message-body-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
-                sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
-                et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-              </div>
-            </div>
-          </article>
-          <article class="message">
-            <div class="message-header">
-              <p>Question 2 <a href="#collapsible-message-accordion-2" data-action="collapse">Collapse/Expand</a></p>
-            </div>
-            <div id="collapsible-message-accordion-2" class="message-body is-collapsible" data-parent="accordion_first">
-              <div class="message-body-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
-                sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
-                et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-              </div>
-            </div>
-          </article>
-          <article class="message">
-            <div class="message-header">
-              <p>Question 3 <a href="#collapsible-message-accordion-3" data-action="collapse">Collapse/Expand</a></p>
-            </div>
-            <div id="collapsible-message-accordion-3" class="message-body is-collapsible" data-parent="accordion_first">
-              <div class="message-body-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
-                sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
-                et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <hr />
-        <section id="accordion2" class="mb-6 mt-6">
+        <section id="accordion2" class="mb-6">
           <div class="group">
             <h3 class="button is-primary is-outlined">&nbsp;Section 1： Drag me to sort 【拖拽我 可以排序】</h3>
             <div>
@@ -764,6 +776,46 @@
             </div>
           </div>
         </section>
+
+        <hr />
+        <div id="accordion_first" class="mb-6 mt-6">
+          <article class="message">
+            <div class="message-header">
+              <p>Question 1 <a href="#collapsible-message-accordion-1" class="is-active" data-action="collapse">Collapse/Expand</a></p>
+            </div>
+            <div id="collapsible-message-accordion-1" class="is-active message-body is-collapsible" data-parent="accordion_first">
+              <div class="message-body-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
+                sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
+                et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+              </div>
+            </div>
+          </article>
+          <article class="message">
+            <div class="message-header">
+              <p>Question 2 <a href="#collapsible-message-accordion-2" data-action="collapse">Collapse/Expand</a></p>
+            </div>
+            <div id="collapsible-message-accordion-2" class="message-body is-collapsible" data-parent="accordion_first">
+              <div class="message-body-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
+                sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
+                et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+              </div>
+            </div>
+          </article>
+          <article class="message">
+            <div class="message-header">
+              <p>Question 3 <a href="#collapsible-message-accordion-3" data-action="collapse">Collapse/Expand</a></p>
+            </div>
+            <div id="collapsible-message-accordion-3" class="message-body is-collapsible" data-parent="accordion_first">
+              <div class="message-body-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex
+                sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu
+                et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+              </div>
+            </div>
+          </article>
+        </div>
 
         <hr />
         <article class="panel is-primary block mb-6 mt-6">
@@ -823,7 +875,128 @@
           </div>
         </article>
       </div>
+      <div class="tab-content is-block">
+        <div class="columns blk-btn-group is-multiline is-mobile is-variable is-1 is-vcentered">
+          <!-- <div class="column" style="height: 150px; width: 200px; border: 1px solid"> -->
+          <div class="column">
+            <button id="btnGridChrome" class="button is-light blk-large-btn-square">
+              <div>
+                <div>
+                  <img height="48" width="48" src="assets/sysIcon/Chrome.png" />
+                </div>
+                <div>chrome</div>
+              </div>
+            </button>
+          </div>
+          <div class="column">
+            <button id="btnGridDiskC" class="button is-light blk-large-btn-square">
+              <div>
+                <div>
+                  <img height="48" width="48" src="assets/sysIcon/Chrome.png" />
+                </div>
+                <div>chrome</div>
+              </div>
+            </button>
+          </div>
+          <div class="column">
+            <button id="btnGridNotepad" class="button is-light blk-large-btn-square">
+              <div>
+                <div>
+                  <img height="48" width="48" src="assets/sysIcon/Chrome.png" />
+                </div>
+                <div>chrome</div>
+              </div>
+            </button>
+          </div>
 
+          <div class="column">
+            <button id="btnGridCmd" class="button is-light blk-large-btn-square">
+              <div>
+                <div>
+                  <img height="48" width="48" src="assets/sysIcon/Chrome.png" />
+                </div>
+                <div>chrome</div>
+              </div>
+            </button>
+          </div>
+          <div class="column">
+            <button id="btnGridURL" class="button is-light blk-large-btn-square">
+              <div>
+                <div>
+                  <img height="48" width="48" src="assets/sysIcon/Chrome.png" />
+                </div>
+                <div>chrome</div>
+              </div>
+            </button>
+          </div>
+          <!-- container style="height: 128px; width: 128px; border: red 3px solid" -->
+          <div class="column">
+            <button class="button is-light" style="height: 128px; width: 128px">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </button>
+          </div>
+          <div class="column">
+            <button class="button is-light" style="height: 128px; width: 128px">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </button>
+          </div>
+          <div class="column">
+            <button class="button is-light blk-large-size">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </button>
+          </div>
+          <div class="column">
+            <button class="button is-light blk-large-btn-square">
+              <div class="level">
+                <div>
+                  <img height="48" width="48" src="/assets/sysIcon/ControlPanel.ico" />
+                </div>
+                <span>GitHub</span>
+              </div>
+            </button>
+          </div>
+          <div class="column">
+            <button class="button is-light blk-large-size">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </button>
+          </div>
+          <div class="column">
+            <button class="button">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </button>
+          </div>
+
+          <div class="column">
+            <button class="button is-light" style="height: 128px; width: 128px">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </button>
+          </div>
+          <div class="column">
+            <button class="button is-light" style="height: 128px; width: 128px">
+              <img height="64" width="64" src="assets/electron.png" />
+              <div>GitHub</div>
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="tab-content">
         <!--  is-mobile对tile无效，不知道是bug，还是设计原因，要自己找下改哪里 -->
         <div class="tile is-ancestor is-mobile">
@@ -919,10 +1092,10 @@
 
         <section class="section is-max-desktop block has-text-centered">
           <div>
-            <h1 class="title">Hello World!</h1>
+            <h1 class="title">Hello Bulma!</h1>
             这是<i>一个斜体</i> 这是一个换行<br />
             <p>这是一个段落</p>
-            <p class="subtitle">subtitle <strong>Bulma</strong>!</p>
+            <p class="subtitle">CSS <strong>Bulma</strong>!</p>
             <p>这是一个段落</p>
           </div>
         </section>
@@ -1073,7 +1246,9 @@
           您的浏览器不支持 HTML5 video 标签。
         </video>
         <div class="mt-6">
-          <webview src="https://www.electronjs.org/" style="display: inline-flex; width: 1000px; height: 700px"></webview>
+          <!-- 加上sandbox就不能跳转到外站了 -->
+          <!-- <iframe src="https://www.electronjs.org/zh/" style="display: inline-flex; width: 1000px; height: 700px"  sandbox></iframe> -->
+          <iframe src="https://www.electronjs.org/zh/" style="display: inline-flex; width: 1000px; height: 700px" frameborder="0"></iframe>
         </div>
       </div>
     </div>

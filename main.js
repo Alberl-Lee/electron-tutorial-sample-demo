@@ -8,8 +8,11 @@ function createWindow() {
     width: 1200,
     height: 800,
     webPreferences: {
+      // sandbox: false, // 在此render进程中禁用沙箱
+      nodeIntegration: true, // 在此render进程中启用node
+      contextIsolation: false, // 取消上下文隔离
+      // 上面2个设置后，就可以在render种直接调用require，否则会提示require is not defined
       preload: path.join(__dirname, "preload.js"),
-      webviewTag: true, //启用<webview>标签
     },
   });
 
