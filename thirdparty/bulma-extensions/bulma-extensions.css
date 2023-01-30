@@ -1604,7 +1604,7 @@
 .is-checkradio[type="radio"] + label:before {
   position: absolute;
   left: 0;
-  top: 0;
+  /* top: 0; */
   content: "";
   border: 0.1rem solid #dbdbdb;
 }
@@ -1615,7 +1615,7 @@
   position: absolute;
   display: none;
   content: "";
-  top: 0;
+  /* top: 0; */
 }
 .is-checkradio[type="checkbox"].is-rtl + label,
 .is-checkradio[type="radio"].is-rtl + label {
@@ -1767,7 +1767,8 @@
 .is-checkradio[type="checkbox"] + label:after {
   width: 0.375rem;
   height: 0.6rem;
-  top: 0.405rem;
+  /* top: 0.405rem; */
+  top: 0.558rem;
   left: 0.6rem;
 }
 .is-checkradio[type="checkbox"].is-block + label::after,

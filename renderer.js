@@ -8,6 +8,18 @@
 
 // import { three3dCube } from "./three3dCube.js";
 // import { three3dTiger } from "./three3dTiger.js";
+// 如果不是浏览器环境，才用require
+function isElectron() {
+  return window && window.process && window.process.type;
+}
+
+let remote, win;
+var ipcRenderer;
+if (isElectron()) {
+  ipcRenderer = require("electron").ipcRenderer;
+  remote = require("@electron/remote");
+  win = remote.getCurrentWindow();
+}
 
 console.log("hello world!");
 
@@ -41,6 +53,385 @@ function closeMenu() {
   var menu = document.getElementById("global-menu");
   menu.style.display = "none";
 }
+
+function showMaxMinImg(bShowMaxImg) {
+  if (bShowMaxImg) {
+    $(".blk-btn-max").show();
+    $(".blk-btn-restore").hide();
+  } else {
+    $(".blk-btn-max").hide();
+    $(".blk-btn-restore").show();
+  }
+}
+
+function toggleMaxMinImg() {
+  showMaxMinImg(win.isMaximized());
+}
+
+$(".blk-btn-max").click(function (e) {
+  // $(this).addClass("is-hidden");
+  // $(this).hide();
+  // $(this).toggle();
+  // $(".blk-btn-max").hide();
+  // $(".blk-btn-restore").show();
+  toggleMaxMinImg();
+  win.maximize();
+});
+
+$(".blk-btn-restore").click(function (e) {
+  // $(this).hide();
+  // $(".blk-btn-max").show();
+  // $(".blk-btn-restore").hide();
+  toggleMaxMinImg();
+  win.unmaximize();
+});
+
+$(".blk-btn-min").click(function (e) {
+  win.minimize();
+});
+
+$(".blk-btn-close").click(function (e) {
+  win.close();
+  // remote.app.quit()
+});
+
+if (isElectron()) {
+  win.on("maximize", () => {
+    showMaxMinImg(false);
+  });
+
+  win.on("unmaximize", () => {
+    showMaxMinImg(true);
+  });
+}
+
+// 标题栏按钮 禁止显示 自己的右键菜单
+$(".blk-titlebar").contextmenu(function (e) {
+  e.preventDefault();
+  return false;
+});
+
+// $(document).mousemove(function (e) {
+//   let me = $(".dragCustom2").get(0); // dom对象
+//   if (e.target == me) {
+//     console.log("document My event"); // mouseout 离开了父元素，进入了子元素
+//     // $(".dragCustom2").css("background-color", "green");
+//   } else {
+//     console.log("document Child event"); // mouseout 离开了子元素，进入了父元素
+//     // $(".dragCustom2").css("background-color", "blue");
+//   }
+
+//   // let me2 = $(".dragCustom222").get(0); // dom对象
+//   let me2 = $("#aa").get(0); // dom对象
+
+//   if (e.target == me2)  {
+//     console.log("#aa Child event"); // mouseout 离开了子元素，进入了父元素
+//   }
+// });
+
+let isEnter = false;
+let isLeave = false;
+
+$(".dragCustom2")
+  .mouseenter(function () {
+    // $(".dragCustom2").load(location.href + " .dragCustom2"); // Reload
+    // $(".dragCustom222").load(location.href + " .dragCustom222");
+    // location.reload();
+
+    $(".dragCustom2").on("load", function () {
+      $(".dragCustom2").css("app-region", "drag");
+    });
+
+    // $(".dragCustom2").css("background-color", "yellow");
+
+    // $(".dragCustom2").ready(function () {
+    //   $(".dragCustom2").css("app-region", "drag");
+    // });
+
+    // $(".dragCustom2").load(location.href + " .dragCustom2"); // Reload
+    // load之后恢复到HTML的初始状态了，得重新js设置属性
+    // $(".dragCustom2").reload();
+
+    // app-region属性用js动态设置不生效，除非同时打开F12，并且要把右侧的HTML展开到显示出本元素的HTML，才生效，此时才能拖动。。。
+    // $(".dragCustom2").css("app-region", "drag"); // 只设置这个也是OK的，因为chrome自带这个属性
+    // $(".dragCustom2").css("-webkit-app-region", "drag"); // jquery的bug，调用这个后，变成了app-region，不过获取-webkit-app-region也是对的，说明把-webkit-去掉了
+    // $(".dragCustom2").css("--webkit-app-region", "drag");  // CSS规范是自定义属性要以-- 开头，这个设置就OK
+    // $(".dragCustom2").css("webkitappregion", "drag"); // 这个也设置不成功，没有这个属性
+
+    // $(".dragCustom2").css({ "app-region": "drag", "-webkit-app-region": "drag" });
+    // $(".dragCustom2").removeClass("no-dragable");
+    // $(".dragCustom2").addClass("dragable");
+
+    // let a = $(".dragCustom2").css("app-region");
+    // let d =  $(".dragCustom2").css("-webkit-app-region");
+    // $(".dragCustom2").css("app-region", "drag");
+    // $(".dragCustom2").css("-webkit-app-region", "drag");
+    // d =  $(".dragCustom2").css("-webkit-app-region");
+    // a = $(".dragCustom2").css("app-region");
+    // $(".dragCustom2").addClass("dragable"); // 用css addClass设置同一个属性，是css生效，addClass不生效
+    // $(".foreground").addClass("no-select");
+    // $(".dragCustom2").attr("style", "-webkit-app-region: drag; background-color: pink; ");
+    // document.getElementById("aa").style.cssText = "-webkit-app-region: drag";
+    // 原生js设置-webkit-app-region也变成app-region
+    // 不过下面这个没有变
+    $(".dragCustom2").get(0).setAttribute("style", "-webkit-app-region: drag; background-color: pink; ");
+    // $(".dragCustom2").get(0).setAttribute("style", "-webkit-app-region: drag");
+
+    $(".dragCustom2").click(function () {
+      $(".dragCustom2").get(0).setAttribute("style", "-webkit-app-region: drag; background-color: red; ");
+    });
+
+    // 点一下任务栏，把窗口最小化，然后再点一下，恢复后，就可以拖拽了，说明这个要重载？ 或者触发什么消息？
+    // 切换tab也生效，这个是block hidden切换了，应该是这段dom重新加载了  滚动条滚动出去再回来，也生效。滚动只要有一部分区域不显示，就生效
+    //滚动条随便滚动一下就行了，但是点击内部的按钮，却没用，说明不是重绘事件，scroll要触发display？
+    // 是onblur事件？
+    // $(".dragCustom2").trigger("resize");
+    $(".dragCustom2").trigger("click");
+    $(".dragCustom2").trigger("scroll");
+    $(".dragCustom222").trigger("scroll");
+    $(document).trigger("scroll");
+    // $(body).trigger("scroll");
+    $(window).trigger("resize");
+    $(window).trigger("scroll");
+
+    //
+    //----------是因为有这个css代码，导致不能立即生效，注释掉就正常了
+    // button .button { -webkit-app-region: no-drag; // 按钮区域不允许拖拽，否则无法点击}
+
+    //  display: flex !important;
+    // $(".dragCustom2").css("display", "none");
+    // $(".dragCustom2").css("display", "none !important");
+    // $(".dragCustom2").css("display", "none");
+    // $(".dragCustom2").css("display", "block");
+
+    // $('.dragCustom2').attr('style','display:none !important');
+    // $(".dragCustom2").attr("style", "display:flex !important; -webkit-app-region: drag; background-color: pink; ");
+    $(".dragCustom2").css("cssText", "display:none !important");
+    $(".dragCustom2").css("cssText", "display:flex !important; -webkit-app-region: drag; background-color: pink; ");
+
+    console.log("------------------mouseenter ");
+    isEnter = true;
+    isLeave = false;
+  })
+  .mouseleave(function () {
+    console.log("------------------mouseleave ");
+    // $(".dragCustom2").css("-webkit-app-region", "no-drag");
+    isEnter = false;
+    isLeave = true;
+  })
+  .mouseover(function () {
+    // $(".dragCustom2").css("background-color", "red");
+    console.log("------------------mouseover ");
+  })
+  .mouseout(function (e) {
+    // e.currentTarget.style.backgroundColor ='blue';
+    // const target = e.target;
+    // switch (target.id) {
+    //   case "div1":
+    //     target.style.backgroundColor = "blue";
+    //     break;
+    //   case "div2":
+    //     target.style.backgroundColor = "green";
+    //     break;
+    //   case "div3":
+    //     target.style.backgroundColor = "red";
+    //     break;
+    // }
+    // console.log(target.id);
+    // console.log(target);
+
+    // let me2 = $(".dragCustom2").first(); // jQuery对象
+    let me = $(".dragCustom2").get(0); // dom对象
+    if (e.target == me) {
+      console.log("My event"); // mouseout 离开了父元素，进入了子元素
+      // $(".dragCustom2").css("background-color", "green");
+    } else {
+      console.log("Child event"); // mouseout 离开了子元素，进入了父元素
+      // $(".dragCustom2").css("background-color", "blue");
+    }
+
+    if (isLeave) {
+      // $(".dragCustom2").css("background-color", "lightgray");
+
+      console.log("isLeave mouseout ");
+      return true;
+    }
+    // $(".dragCustom2").css("background-color", "green");
+    console.log("------------------mouseout ");
+
+    // 如果鼠标在自己身上，不在子元素身上，则允许拖动
+  });
+
+// // 窗口拖拽
+// let isDraging = false;
+// let xOld = 0,
+//   yOld = 0;
+
+// function dragBegin() {
+//   isDraging = true;
+//   $(".dragCustom").addClass("no-select");
+
+//   if (window.captureEvents) {
+//     window.captureEvents(Event.MOUSEMOVE | Event.MOUSEUP);
+//   }
+// }
+
+// function dragEnd() {
+//   isDraging = false;
+
+//   if (window.captureEvents) {
+//     window.releaseEvents(Event.MOUSEMOVE | Event.MOUSEUP);
+//   }
+
+//   $(".dragCustom").removeClass("no-select");
+// }
+
+// $(document).mouseup(function (e) {
+//   // console.log("------------------document mouseup: ");
+
+//   dragEnd();
+// });
+
+// $(document).mouseleave(function (e) {
+//   // console.log("------------------document mouseleave: ");
+
+//   dragEnd();
+// });
+
+// // $(document).mouseout(function (e) {
+// //   dragEnd();
+// // });
+
+// $(".dragCustom").mouseup(function (e) {
+//   dragEnd();
+
+//   // console.log("------------------mouseup: ");
+// });
+
+// $(".dragCustom").mouseleave(function (e) {
+//   dragEnd();
+
+//   // console.log("------------------mouseleave: ");
+//   // dragEnd();
+// });
+
+// let timeOld = 0;
+
+// $(".dragCustom").mousedown(function (e) {
+//   // console.log("------------------mousedown: ");
+
+//   dragBegin();
+//   xOld = e.screenX;
+//   yOld = e.screenY;
+// });
+
+// $(".dragCustom").mousemove(function (e) {
+//   if (!isDraging) return;
+//   let timeNow = new Date().getTime();
+//   let interval = timeNow - timeOld;
+//   // console.log("timeNow " + timeNow + "  interval " + interval);
+
+//   // if (interval < minInterval) return;
+//   // timeOld = timeNow;
+
+//   // console.log("mousemove: ");
+
+//   const remote = require("@electron/remote");
+//   const win = remote.getCurrentWindow();
+//   let x = e.screenX;
+//   let y = e.screenY;
+//   let display = remote.screen.getDisplayNearestPoint({ x, y });
+//   let screenScale = display.scaleFactor;
+//   let xOffset = e.screenX - xOld;
+//   let yOffset = e.screenY - yOld; // 这个也没有*1.25
+//   xOld = e.screenX;
+//   yOld = e.screenY;
+
+//   if (screenScale != 1) {
+//     // 能被 1/(screenScale-1)整除，就不会有问题
+//     let integerDPI = 1 / (screenScale - 1);
+//     let remainX = xOffset % integerDPI;
+//     let remainY = yOffset % integerDPI;
+
+//     if (0 != remainX) {
+//       // 解决移动过程中，鼠标不太跟窗口的问题  1/(screenScale-1)
+//       // if (xOffset < 0) {
+//       //   // xOffset+=1;
+//       //   // xOffset+=2;
+//       //   xOffset += 1 + -Math.round(remain / integerDPI);
+//       // } else if (xOffset > 0) {
+//       //   xOffset += 1 + Math.round(remain / integerDPI);
+//       // }
+
+//       xOffset += 1 + Math.abs(Math.round(remainX / integerDPI));
+//     }
+
+//     if (0 != remainY) {
+//       yOffset += 1 + Math.abs(Math.round(remainY / integerDPI));
+//     }
+
+//     // console.log("xOffset: " + xOffset + ", yOffset: " + yOffset);
+//   }
+
+//   // ipcRenderer.send("move-application", {
+//   //   xOffset: xOffset,
+//   //   yOffset: yOffset,
+//   // });
+
+//   // 不用ipc，可以直接remote访问
+//   const pos = win.getPosition(); //  这个也没有*1.25
+//   pos[0] += xOffset;
+//   pos[1] += yOffset;
+//   // console.log(win.getBounds());
+//   if (screenScale == 1) {
+//     win.setPosition(pos[0], pos[1], true); // true Mac才有动画效果
+//     return;
+//   }
+
+//   const WIDTH = 1200;
+//   const HEIGHT = 800;
+//   // x=164是对的  166就变成165 width: 1202
+//   // x=100 是对的，set后还是 100  1200
+//   // x=101 是错的，就变成  x:100  width: 1202
+//   // scale = 1.25    scale = 1.5      setBounds({width: WIDTH, height: HEIGHT })    resizable: false
+//   //                                  纠正，每纠正一次，就是往前-1个像素点
+//   // x   x   width   x   width        x   width                                     x   width
+//   // 100 100 1200  √  100 1200   √
+//   // 101 100 1202    100 1202         100 1200   √
+//   // 102 101 1202    102 1200   √     100 1202
+//   // 103 102 1202    102 1202         101 1202
+//   // 104 104 1200  √  104 1200   √
+//   // 105 104 1202    104 1202         104 1200   √
+//   // 106 105 1202    106 1200   √     104 1202
+//   // 107 106 1202    106 1202         105 1202
+//   // 108 108 1200  √  108 1200   √
+//   // 109 108 1202    108 1202         108 1200   √
+//   // 110 109 1202    110 1200   √     108 1202
+//   // 111 110 1202    110 1202         109 1202
+//   // 112 112 1200  √  112 1200   √
+//   // 113 112 1202    112 1202         112 1200   √
+//   // x都是差-1    width都是差+2。 因为这些都是/scale了。 第1个x是屏幕像素100  第2个x是被*scale绘制到屏幕上，但getBounds会再/scale
+//   // x的误差问题不大，差1个像素，移动过程肉眼看不出来。
+//   // 而且x被缩放后，本身就会差1个像素，是因为没有半个像素点，只能向下取整，这个解决不了，除非DPI设置为1的整数，比如200%，但一般客户都是设置为125% 115%。
+//   // 而width就会影响布局，元素老是变，所以把width恢复一下就行。
+//   // 1.25时，x能被4整除的，就正确。  1.5时，能被2整除的，就正确。 说明是能被1/(scale-1) 整除，就正确。  而且不管x怎么设置，缩放后的x，尾数都没出现3 7 11 13 17的
+//   // 不好解决，主要是setBounds会自动缩放*1.25，如果能自己去调用更底层的，就能解决。这个不是electron的问题，是chromium的bug，除非再改改chromium
+//   // 加上  resizable: false能解决，但是窗口不能调节大小了。  不过，可以拖拽前设置为false，拖拽后，设置为true恢复原来的状态
+//   // resizable: false 依然有误差 width都是差+1
+//   let resizableOld = win.isResizable();
+//   win.setResizable(false);
+
+//   // win.setPosition(pos[0], pos[1], true); // true Mac才有动画效果
+//   // win.setSize(sizeOld[0], sizeOld[1]); // DPI不等于100%时，setPosition会改变大小，所以要setSize恢复一下，会有2个像素的误差，是计算精度问题
+//   win.setBounds({ x: pos[0], y: pos[1], width: WIDTH, height: HEIGHT });
+//   // console.log(win.getBounds());
+//   win.setBounds({ width: WIDTH, height: HEIGHT }); // 跟setSize效果一样
+//   win.setBounds({ width: WIDTH, height: HEIGHT }); // 多调一次修正
+//   // console.log(win.getBounds());
+
+//   // win.setResizable(true);
+//   win.setResizable(resizableOld);
+// });
 
 // // Dropdowns
 // var $dropdowns = getAll(".dropdown:not(.is-hoverable)");
@@ -286,10 +677,10 @@ BulmaTagsInput.attach();
 //   slidesToShow: 4,
 // });
 
-bulmaCarousel.attach("#carousel-demo", {
-  slidesToScroll: 1,
-  slidesToShow: 4,
-});
+// bulmaCarousel.attach("#carousel-demo", {
+//   slidesToScroll: 1,
+//   slidesToShow: 4,
+// });
 
 // // Initialize all elements with carousel class.
 // const carousels = bulmaCarousel.attach(".carousel", options);
@@ -301,16 +692,21 @@ bulmaCarousel.attach("#carousel-demo", {
 // }
 
 let mapGridBtn = {
-  btnGridChrome: "Chrome.exe",
-  btnGridDiskC: "C:\\Program Files",
-  btnGridCmd: "cmd.exe",
-  btnGridCmd: "calc.exe",
-  btnGridNotepad: "notepad.exe",
   btnGridURL: "https://bulma.io/documentation/elements/button/",
+  btnGridCalc: "calc.exe",
+  btnGridDiskC: "C:\\Program Files",
+  btnGridRemoteDesktop: "mstsc.exe",
+  btnGridChrome: "chrome.exe",
+  btnGridFirefox: "firefox.exe",
+  btnGridCmd: "cmd.exe",
+  btnGridNotepad: "notepad.exe",
+  btnGridRegedit: "regedit.exe",
+  btnGridElectron: "https://www.electronjs.org/zh/",
+  btnGridGithub: "https://github.com/",
 };
 
 var shellCache = null;
-$(".blk-btn-group  button").click(function (e) {
+$(".blk-btn-group button").click(function (e) {
   let id = $(this).attr("id");
   if (undefined == id || "" == id) return;
 

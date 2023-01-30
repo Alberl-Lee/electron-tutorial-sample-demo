@@ -1,4 +1,10 @@
 @charset "utf-8";
+
+// $primary: red;
+// $background: $white-ter;
+// $background: black;
+
+// 在import之前改变primary等颜色，这样 is-primary的css颜色就会变成red
 @import "../node_modules/bulma/bulma.sass";
 
 // Customization
@@ -31,10 +37,59 @@ $primary-invert: $pink-invert;
 //   background-color: $blue;
 // }
 
+.dragable {
+  -webkit-app-region: drag !important;
+}
+
+.no-dragable {
+  -webkit-app-region: no-drag !important;
+}
+
+.dragImg {
+  -webkit-user-drag: element;
+}
+
+// 下面这种不太通用，比如progress、edit等其他控件忘记加进来，就无法响应了，得把所有需要响应的控件都加进来。而且如果后面有人新增控件类型，就会被坑，都不知道为什么不能响应
+a,
+button,
+.button {
+  -webkit-app-region: no-drag; // 按钮区域不允许拖拽，否则无法点击
+}
+
+.no-select {
+  -webkit-user-select: none; // 不允许选择文字
+}
+
 html {
   // overflow-x: auto,
-  overflow-y: auto; // 自动隐藏垂直滚动条 ，加!important 可以设置为高优先级，比其他的设置优先
-  // overflow: hidden, // 强制隐藏滚动条
+  // overflow-y: auto; // 自动隐藏垂直滚动条 ，加!important 可以设置为高优先级，比其他的设置优先
+  overflow: hidden, // 强制隐藏滚动条
+}
+
+.scroll {
+  // overflow-y: auto;
+  overflow:scroll;
+}
+
+.backgroundIndex {
+  z-index: -1;
+  // position : relative;
+}
+
+.backgroundFullHeight {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+// *{        /* CSS Reset */
+//   margin : 0;
+//   padding : 0;
+// }
+
+.foreground {
+  // position : relative;
+  // z-index: 100;
 }
 
 .bulma-arrow-mixin {
@@ -45,9 +100,96 @@ html {
   @include delete;
 }
 
+$my-color: red;
+.bulma-hamburger-mixin {
+  @include hamburger(2.5rem);
+  // background-color: $my-color;
+}
+
+.bulma-control-mixin {
+  @include control;
+  background: deeppink;
+  color: white;
+
+  &.is-small {
+    @include control-small;
+  }
+
+  &.is-medium {
+    @include control-medium;
+  }
+
+  &.is-large {
+    @include control-large;
+  }
+}
+
+.bulma-button-mixin {
+  @extend .button;
+
+  background: hsl(0, 0%, 86%);
+  // background: transparent;
+  // background-color: transparent;
+
+  color: white;
+  // background-color: white;
+  border-color: #dbdbdb;
+  // border: none;
+  border-radius: 10px;
+
+  &.is-light {
+    background: transparent;
+    border: none;
+
+    &:focus,
+    &.is-focused {
+      &:not(:active) {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &:focus,
+  &.is-focused {
+    // border-color: red;
+    // color: red;
+    // border: none;
+    // border-color: transparent;
+
+    &:not(:active) {
+      box-shadow: $button-focus-box-shadow-size bulmaRgba(yellow, 0.25);
+      // box-shadow: none;
+    }
+  }
+
+  &:active,
+  &.is-active {
+    border-color: green;
+    color: green;
+  }
+}
+
+.bulma-placeholder-mixin {
+  @include placeholder {
+    color: lightblue;
+  }
+}
+
+.bulma-reset-mixin {
+  @include reset;
+}
+
 // 垂直水平居中
 .bulma-center-mixin {
   @include center($width: 30);
+}
+
+.inline {
+  display: inline !important;
+}
+
+.inline-block {
+  display: inline-block !important;
 }
 
 .cursor-pointer {
@@ -69,25 +211,43 @@ html {
 
 // 文字水平居中
 .textCenter {
-  text-align: center;
+  text-align: center !important;
 }
 
 // 垂直水平居中 子元素
 .childToCenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 // 垂直居中 子元素
 .childToVCenter {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
 }
 
 // 垂直居中 子元素，非flex布局
 .vCenter {
-  vertical-align: middle;
+  vertical-align: middle !important;
+}
+
+.vCenterRadio {
+  vertical-align: middle !important;
+  margin-top: -2px;
+  margin-bottom: 1px;
+}
+
+.blk-checkradio[type="checkbox"],
+.blk-checkradio[type="radio"] {
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: inline-block;
+  position: absolute;
+  // opacity: 0;
 }
 
 // 文字超出后边省略号
@@ -135,18 +295,6 @@ html {
 .red:active {
   color: #de898c;
   // filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24');
-}
-
-#left,
-#right {
-  background-color: #e8e8e8;
-  float: left;
-  height: 100%;
-  width: 50%;
-  /* padding-left: 20px; */
-  /* padding-right: 100px; */
-  /* padding-top: 149px; */
-  /* position: relative;  */
 }
 
 .tab-content {
@@ -233,7 +381,400 @@ html {
   cursor: pointer;
 }
 
+.tri2 {
+  width: 0px;
+  height: 0px;
+  margin: 20px auto;
+  border: 40px solid transparent;
+  border-bottom-color: rgb(85, 160, 27);
+  cursor: pointer;
+}
+
+.triangle {
+  fill: rgb(85, 160, 27);
+  stroke: rgb(85, 160, 27);
+  stroke-width: 50;
+}
+
 .blk-large-btn-square {
   height: 128px;
   width: 128px;
+}
+
+.blk-48x48 {
+  height: 48px;
+  width: 48px;
+}
+
+.border {
+  border: 1px solid;
+}
+
+.button2 {
+  background-color: yellow;
+  border-color: red;
+  border-width: 3px;
+  color: green;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: calc(0.5em - 1px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.button2:hover,
+.button2.is-hovered {
+  border-color: #b5b5b5;
+  color: #363636;
+}
+
+.button2:focus,
+.button2.is-focused {
+  border-color: #485fc7;
+  color: #363636;
+}
+
+.button2:focus:not(:active),
+.button2.is-focused:not(:active) {
+  box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.25);
+}
+
+.button2:active,
+.button2.is-active {
+  border-color: #4a4a4a;
+  color: #363636;
+}
+
+.button2.is-light {
+  background-color: whitesmoke;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.button2.is-light:hover,
+.button2.is-light.is-hovered {
+  background-color: #eeeeee;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.button2.is-light:focus,
+.button2.is-light.is-focused {
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.button2.is-light:focus:not(:active),
+.button2.is-light.is-focused:not(:active) {
+  box-shadow: 0 0 0 0.125em rgba(245, 245, 245, 0.25);
+}
+
+.button2.is-light:active,
+.button2.is-light.is-active {
+  background-color: #e8e8e8;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.button-no-background {
+  @extend .button;
+
+  background: transparent;
+  border: none;
+  border-radius: 0px;
+
+  &.is-light {
+    background: transparent;
+    border: none;
+
+    &:focus,
+    &.is-focused {
+      &:not(:active) {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &:focus,
+  &.is-focused {
+    &:not(:active) {
+      box-shadow: none;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.blk-no-background {
+  @extend .button-no-background;
+  @extend .is-light;
+}
+
+.blk-btn-min,
+.blk-btn-max,
+.blk-btn-close {
+  @extend .blk-no-background;
+}
+
+.blk-btn-restore {
+  @extend .blk-no-background;
+  @extend .hidden;
+}
+
+.grad-gray {
+  // background-image: linear-gradient(#dbdbdb,#7a7a7a);
+  // background-image: linear-gradient(whitesmoke, silver); // silver #c0c0c0
+  background-image: linear-gradient(whitesmoke, #b5b5b5);
+}
+
+/* tooltip样式 */
+[tooltip] {
+  position: relative;
+}
+
+[tooltip]::after {
+  display: none;
+  content: attr(tooltip);
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 8px 15px;
+  max-width: 200px;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+[tooltip]::before {
+  display: none;
+  content: "";
+  position: absolute;
+  border: 5px solid transparent;
+  border-bottom-width: 0;
+  z-index: 100;
+}
+
+[tooltip]:hover::after {
+  display: block;
+}
+
+[tooltip]:hover::before {
+  display: block;
+}
+
+/* 气泡主题 */
+.tooltip-theme-dark,
+[tooltip]::after {
+  color: #fff;
+  background-color: #313131;
+}
+
+.tooltip-theme-light,
+[tooltip][effect="light"]::after {
+  color: #313131;
+  background-color: #fff;
+  border: 1px solid #313131;
+}
+
+/* 气泡位置 */
+/*----上----*/
+.tooltip-placement-top,
+[tooltip]:not([placement])::after,
+[tooltip][placement=""]::after,
+[tooltip][placement="top"]::after {
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.tooltip-placement-top-right,
+[tooltip][placement="top-right"]::after {
+  bottom: calc(100% + 10px);
+  left: 100%;
+  transform: translate(-100%, 0);
+}
+
+.tooltip-placement-top-left,
+[tooltip][placement="top-left"]::after {
+  bottom: calc(100% + 10px);
+  left: 0;
+  transform: translate(0, 0);
+}
+
+/*----右----*/
+.tooltip-placement-right,
+[tooltip][placement="right"]::after {
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.tooltip-placement-right-top,
+[tooltip][placement="right-top"]::after {
+  left: calc(100% + 10px);
+  top: 0;
+  transform: translate(0, 0);
+}
+
+.tooltip-placement-right-bottom,
+[tooltip][placement="right-bottom"]::after {
+  left: calc(100% + 10px);
+  top: 100%;
+  transform: translate(0, -100%);
+}
+
+/*----下----*/
+.tooltip-placement-bottom,
+[tooltip][placement="bottom"]::after {
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.tooltip-placement-bottom-right,
+[tooltip][placement="bottom-right"]::after {
+  top: calc(100% + 10px);
+  left: 100%;
+  transform: translate(-100%, 0);
+}
+
+.tooltip-placement-bottom-left,
+[tooltip][placement="bottom-left"]::after {
+  top: calc(100% + 10px);
+  left: 0;
+  transform: translate(0, 0);
+}
+
+/*----左----*/
+.tooltip-placement-left,
+[tooltip][placement="left"]::after {
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.tooltip-placement-left-top,
+[tooltip][placement="left-top"]::after {
+  right: calc(100% + 10px);
+  top: 0;
+  transform: translate(0, 0);
+}
+
+.tooltip-placement-left-bottom,
+[tooltip][placement="left-bottom"]::after {
+  right: calc(100% + 10px);
+  top: 100%;
+  transform: translate(0, -100%);
+}
+
+/* 三角形主题 */
+.triangle-theme-dark,
+[tooltip]::before {
+  border-top-color: #313131;
+}
+
+.triangle-theme-light,
+[tooltip][effect="light"]::before {
+  border-top-color: #313131;
+}
+
+/* 三角形位置 */
+/*----上----*/
+.triangle-placement-top,
+[tooltip]:not([placement])::before,
+[tooltip][placement=""]::before,
+[tooltip][placement="top"]::before {
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.triangle-placement-top-left,
+[tooltip][placement="top-left"]::before {
+  bottom: calc(100% + 5px);
+  left: 10px;
+}
+
+.triangle-placement-top-right,
+[tooltip][placement="top-right"]::before {
+  bottom: calc(100% + 5px);
+  right: 10px;
+}
+
+/*----右----*/
+.triangle-placement-right,
+[tooltip][placement="right"]::before,
+.triangle-placement-right-top,
+[tooltip][placement="right-top"]::before,
+.triangle-placement-right-bottom,
+[tooltip][placement="right-bottom"]::before {
+  left: calc(100% + 3px);
+  top: 50%;
+  transform: translate(0, -50%) rotateZ(90deg);
+}
+
+.triangle-placement-right-top,
+[tooltip][placement="right-top"]::before {
+  top: 10px;
+}
+
+.triangle-placement-right-bottom,
+[tooltip][placement="right-bottom"]::before {
+  bottom: 10px;
+  top: auto;
+  transform: translate(0, 0) rotateZ(90deg);
+}
+
+/*----下----*/
+.triangle-placement-bottom,
+[tooltip][placement="bottom"]::before,
+.triangle-placement-bottom-left,
+[tooltip][placement="bottom-left"]::before,
+.triangle-placement-bottom-right,
+[tooltip][placement="bottom-right"]::before {
+  top: calc(100% + 5px);
+  left: 50%;
+  transform: translate(-50%, 0) rotateZ(180deg);
+}
+
+.triangle-placement-bottom-left,
+[tooltip][placement="bottom-left"]::before {
+  transform: translate(0, 0) rotateZ(180deg);
+  left: 10px;
+}
+
+.triangle-placement-bottom-right,
+[tooltip][placement="bottom-right"]::before {
+  right: 10px;
+  left: auto;
+}
+
+/*----左----*/
+.triangle-placement-left,
+[tooltip][placement="left"]::before,
+.triangle-placement-left-top,
+[tooltip][placement="left-top"]::before,
+.triangle-placement-left-bottom,
+[tooltip][placement="left-bottom"]::before {
+  right: calc(100% + 3px);
+  top: 50%;
+  transform: translate(0, -50%) rotateZ(270deg);
+}
+
+.triangle-placement-left-top,
+[tooltip][placement="left-top"]::before {
+  top: 10px;
+}
+
+.triangle-placement-left-bottom,
+[tooltip][placement="left-bottom"]::before {
+  bottom: 10px;
+  top: auto;
+  transform: translate(0, 0) rotateZ(270deg);
 }
