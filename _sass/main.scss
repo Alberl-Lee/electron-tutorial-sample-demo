@@ -37,39 +37,116 @@ $primary-invert: $pink-invert;
 //   background-color: $blue;
 // }
 
-.dragable {
-  -webkit-app-region: drag !important;
-}
-
-.no-dragable {
-  -webkit-app-region: no-drag !important;
-}
-
 .dragImg {
   -webkit-user-drag: element;
-}
-
-// 下面这种不太通用，比如progress、edit等其他控件忘记加进来，就无法响应了，得把所有需要响应的控件都加进来。而且如果后面有人新增控件类型，就会被坑，都不知道为什么不能响应
-a,
-button,
-.button {
-  -webkit-app-region: no-drag; // 按钮区域不允许拖拽，否则无法点击
 }
 
 .no-select {
   -webkit-user-select: none; // 不允许选择文字
 }
 
-html {
-  // overflow-x: auto,
-  // overflow-y: auto; // 自动隐藏垂直滚动条 ，加!important 可以设置为高优先级，比其他的设置优先
-  overflow: hidden, // 强制隐藏滚动条
+.dragable {
+  // -webkit-app-region: drag !important;
+  -webkit-app-region: drag;
 }
 
-.scroll {
-  // overflow-y: auto;
-  overflow:scroll;
+.no-dragable {
+  -webkit-app-region: no-drag;
 }
+
+// 下面这种不太通用，比如progress、edit等其他控件忘记加进来，就无法响应了，得把所有需要响应的控件都加进来。而且如果后面有人新增控件类型，就会被坑，都不知道为什么不能响应
+// a,
+// button,
+// .button {
+//   -webkit-app-region: no-drag; // 按钮区域不允许拖拽，否则无法点击
+// }
+
+// // 可以反着来，规定所有的元素都是no-drag;  然后指定某些元素可以拖拽，就可以了
+// * {
+//   -webkit-app-region: no-drag; // 按钮区域不允许拖拽，否则无法点击
+// }
+
+// // div不做限制，会导致滚动条也无法点击
+// // 可以用css或js设置，只有没有子元素的div才可拖拽。 或者指定某个大的div，让它可拖拽
+// p,
+// div {
+//   -webkit-app-region: drag;
+// }
+
+// -webkit-app-region问题点：
+// 1 即使在client区域，右键也是显示系统的菜单，而不是自己的右键菜单
+// 2 drag区域无法响应鼠标事件，哪怕是document都不能收到鼠标事件，应该是全部传给windows窗口了？ 可能得截获native窗口的右键消息进行处理、先试试主进程里能不能收到右键消息
+
+// html {
+//   // overflow-x: auto,
+//   // overflow-y: auto; // 自动隐藏垂直滚动条 ，加!important 可以设置为高优先级，比其他的设置优先
+//   // overflow: hidden; // 强制隐藏滚动条
+// }
+
+html,
+body {
+  // height: 100%;
+  overflow: hidden; // 强制隐藏滚动条
+}
+
+.tabScroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+  // overflow:scroll;
+  // height: auto;
+  // height: 150px; // 可以用jQuery算一下实际高度
+  // height: 100%;
+}
+
+// 滚动条出现页面不跳动
+.wrap {
+  margin-left: calc(100vw - 100%);
+}
+
+// 自定义滚动条样式
+// 整体
+::-webkit-scrollbar {
+  width: 16px; // 垂直滚动条的宽度
+  height: 10px; // 水平滚动条的高度
+  // background-color: blue;
+}
+// 轨道背景
+::-webkit-scrollbar-track {
+  background-color: #c1c1c1;
+}
+
+// 两端按钮
+// ::-webkit-scrollbar-button {
+// background-color: red;
+// }
+// // 轨道未被滑块覆盖的部分
+// ::-webkit-scrollbar-track-piece {
+//   background-color: yellow;
+// }
+// 滑块
+::-webkit-scrollbar-thumb {
+  background-color: #858585;
+  border-radius: 8px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+// // 只修改水平滚动条
+// ::-webkit-scrollbar-thumb:horizontal {
+//   background-color: lightseagreen;
+// }
+::-webkit-scrollbar-thumb:hover {
+  background-color: #333333;
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: #222222;
+}
+// // 垂直滚动条和水平滚动条交汇的部分
+// ::-webkit-scrollbar-corner {
+//   background-color: lightcoral;
+// }
+// // 拖动调整元素大小的十字箭头控件
+// ::-webkit-resizer {
+//   background-color: lightcoral;
+// }
 
 .backgroundIndex {
   z-index: -1;

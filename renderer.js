@@ -54,6 +54,9 @@ function closeMenu() {
   menu.style.display = "none";
 }
 
+var heightTabScrollArea = window.innerHeight - $(".tabScroll").first().offset().top;
+$(".tabScroll").css("height", heightTabScrollArea + "px");
+
 function showMaxMinImg(bShowMaxImg) {
   if (bShowMaxImg) {
     $(".blk-btn-max").show();
@@ -111,156 +114,137 @@ $(".blk-titlebar").contextmenu(function (e) {
   return false;
 });
 
-// $(document).mousemove(function (e) {
-//   let me = $(".dragCustom2").get(0); // dom对象
-//   if (e.target == me) {
-//     console.log("document My event"); // mouseout 离开了父元素，进入了子元素
+// let isEnter = false;
+// let isLeave = false;
+// $(".dragCustom2")
+//   .mouseenter(function () {
+//     // $(".dragCustom2").load(location.href + " .dragCustom2"); // Reload
+//     // $(".dragCustom222").load(location.href + " .dragCustom222");
+//     // location.reload();
+
+//     $(".dragCustom2").on("load", function () {
+//       $(".dragCustom2").css("app-region", "drag");
+//     });
+
+//     // $(".dragCustom2").css("background-color", "yellow");
+
+//     // $(".dragCustom2").ready(function () {
+//     //   $(".dragCustom2").css("app-region", "drag");
+//     // });
+
+//     // $(".dragCustom2").load(location.href + " .dragCustom2"); // Reload
+//     // load之后恢复到HTML的初始状态了，得重新js设置属性
+//     // $(".dragCustom2").reload();
+
+//     // app-region属性用js动态设置不生效，除非同时打开F12，并且要把右侧的HTML展开到显示出本元素的HTML，才生效，此时才能拖动。。。
+//     // $(".dragCustom2").css("app-region", "drag"); // 只设置这个也是OK的，因为chrome自带这个属性
+//     // $(".dragCustom2").css("-webkit-app-region", "drag"); // jquery的bug，调用这个后，变成了app-region，不过获取-webkit-app-region也是对的，说明把-webkit-去掉了
+//     // $(".dragCustom2").css("--webkit-app-region", "drag");  // CSS规范是自定义属性要以-- 开头，这个设置就OK
+//     // $(".dragCustom2").css("webkitappregion", "drag"); // 这个也设置不成功，没有这个属性
+
+//     // $(".dragCustom2").css({ "app-region": "drag", "-webkit-app-region": "drag" });
+//     // $(".dragCustom2").removeClass("no-dragable");
+//     // $(".dragCustom2").addClass("dragable");
+
+//     // let a = $(".dragCustom2").css("app-region");
+//     // let d =  $(".dragCustom2").css("-webkit-app-region");
+//     // $(".dragCustom2").css("app-region", "drag");
+//     // $(".dragCustom2").css("-webkit-app-region", "drag");
+//     // d =  $(".dragCustom2").css("-webkit-app-region");
+//     // a = $(".dragCustom2").css("app-region");
+//     // $(".dragCustom2").addClass("dragable"); // 用css addClass设置同一个属性，是css生效，addClass不生效
+//     // $(".foreground").addClass("no-select");
+//     // $(".dragCustom2").attr("style", "-webkit-app-region: drag; background-color: pink; ");
+//     // document.getElementById("aa").style.cssText = "-webkit-app-region: drag";
+//     // 原生js设置-webkit-app-region也变成app-region
+//     // 不过下面这个没有变
+//     $(".dragCustom2").get(0).setAttribute("style", "-webkit-app-region: drag; background-color: pink; ");
+//     // $(".dragCustom2").get(0).setAttribute("style", "-webkit-app-region: drag");
+
+//     $(".dragCustom2").click(function () {
+//       $(".dragCustom2").get(0).setAttribute("style", "-webkit-app-region: drag; background-color: red; ");
+//     });
+
+//     // 点一下任务栏，把窗口最小化，然后再点一下，恢复后，就可以拖拽了，说明这个要重载？ 或者触发什么消息？
+//     // 切换tab也生效，这个是block hidden切换了，应该是这段dom重新加载了  滚动条滚动出去再回来，也生效。滚动只要有一部分区域不显示，就生效
+//     //滚动条随便滚动一下就行了，但是点击内部的按钮，却没用，说明不是重绘事件，scroll要触发display？
+//     // 是onblur事件？
+//     // $(".dragCustom2").trigger("resize");
+//     $(".dragCustom2").trigger("click");
+//     $(".dragCustom2").trigger("scroll");
+//     $(".dragCustom222").trigger("scroll");
+//     $(document).trigger("scroll");
+//     // $(body).trigger("scroll");
+//     $(window).trigger("resize");
+//     $(window).trigger("scroll");
+
+//     //
+//     //----------是因为有这个css代码，导致不能立即生效，注释掉就正常了
+//     // button .button { -webkit-app-region: no-drag; // 按钮区域不允许拖拽，否则无法点击}
+
+//     //  display: flex !important;
+//     // $(".dragCustom2").css("display", "none");
+//     // $(".dragCustom2").css("display", "none !important");
+//     // $(".dragCustom2").css("display", "none");
+//     // $(".dragCustom2").css("display", "block");
+
+//     // $('.dragCustom2').attr('style','display:none !important');
+//     // $(".dragCustom2").attr("style", "display:flex !important; -webkit-app-region: drag; background-color: pink; ");
+//     $(".dragCustom2").css("cssText", "display:none !important");
+//     $(".dragCustom2").css("cssText", "display:flex !important; -webkit-app-region: drag; background-color: pink; ");
+
+//     console.log("------------------mouseenter ");
+//     isEnter = true;
+//     isLeave = false;
+//   })
+//   .mouseleave(function () {
+//     console.log("------------------mouseleave ");
+//     // $(".dragCustom2").css("-webkit-app-region", "no-drag");
+//     isEnter = false;
+//     isLeave = true;
+//   })
+//   .mouseover(function () {
+//     // $(".dragCustom2").css("background-color", "red");
+//     console.log("------------------mouseover ");
+//   })
+//   .mouseout(function (e) {
+//     // e.currentTarget.style.backgroundColor ='blue';
+//     // const target = e.target;
+//     // switch (target.id) {
+//     //   case "div1":
+//     //     target.style.backgroundColor = "blue";
+//     //     break;
+//     //   case "div2":
+//     //     target.style.backgroundColor = "green";
+//     //     break;
+//     //   case "div3":
+//     //     target.style.backgroundColor = "red";
+//     //     break;
+//     // }
+//     // console.log(target.id);
+//     // console.log(target);
+
+//     // let me2 = $(".dragCustom2").first(); // jQuery对象
+//     let me = $(".dragCustom2").get(0); // dom对象
+//     if (e.target == me) {
+//       console.log("My event"); // mouseout 离开了父元素，进入了子元素
+//       // $(".dragCustom2").css("background-color", "green");
+//     } else {
+//       console.log("Child event"); // mouseout 离开了子元素，进入了父元素
+//       // $(".dragCustom2").css("background-color", "blue");
+//     }
+
+//     if (isLeave) {
+//       // $(".dragCustom2").css("background-color", "lightgray");
+
+//       console.log("isLeave mouseout ");
+//       return true;
+//     }
 //     // $(".dragCustom2").css("background-color", "green");
-//   } else {
-//     console.log("document Child event"); // mouseout 离开了子元素，进入了父元素
-//     // $(".dragCustom2").css("background-color", "blue");
-//   }
+//     console.log("------------------mouseout ");
 
-//   // let me2 = $(".dragCustom222").get(0); // dom对象
-//   let me2 = $("#aa").get(0); // dom对象
-
-//   if (e.target == me2)  {
-//     console.log("#aa Child event"); // mouseout 离开了子元素，进入了父元素
-//   }
-// });
-
-let isEnter = false;
-let isLeave = false;
-
-$(".dragCustom2")
-  .mouseenter(function () {
-    // $(".dragCustom2").load(location.href + " .dragCustom2"); // Reload
-    // $(".dragCustom222").load(location.href + " .dragCustom222");
-    // location.reload();
-
-    $(".dragCustom2").on("load", function () {
-      $(".dragCustom2").css("app-region", "drag");
-    });
-
-    // $(".dragCustom2").css("background-color", "yellow");
-
-    // $(".dragCustom2").ready(function () {
-    //   $(".dragCustom2").css("app-region", "drag");
-    // });
-
-    // $(".dragCustom2").load(location.href + " .dragCustom2"); // Reload
-    // load之后恢复到HTML的初始状态了，得重新js设置属性
-    // $(".dragCustom2").reload();
-
-    // app-region属性用js动态设置不生效，除非同时打开F12，并且要把右侧的HTML展开到显示出本元素的HTML，才生效，此时才能拖动。。。
-    // $(".dragCustom2").css("app-region", "drag"); // 只设置这个也是OK的，因为chrome自带这个属性
-    // $(".dragCustom2").css("-webkit-app-region", "drag"); // jquery的bug，调用这个后，变成了app-region，不过获取-webkit-app-region也是对的，说明把-webkit-去掉了
-    // $(".dragCustom2").css("--webkit-app-region", "drag");  // CSS规范是自定义属性要以-- 开头，这个设置就OK
-    // $(".dragCustom2").css("webkitappregion", "drag"); // 这个也设置不成功，没有这个属性
-
-    // $(".dragCustom2").css({ "app-region": "drag", "-webkit-app-region": "drag" });
-    // $(".dragCustom2").removeClass("no-dragable");
-    // $(".dragCustom2").addClass("dragable");
-
-    // let a = $(".dragCustom2").css("app-region");
-    // let d =  $(".dragCustom2").css("-webkit-app-region");
-    // $(".dragCustom2").css("app-region", "drag");
-    // $(".dragCustom2").css("-webkit-app-region", "drag");
-    // d =  $(".dragCustom2").css("-webkit-app-region");
-    // a = $(".dragCustom2").css("app-region");
-    // $(".dragCustom2").addClass("dragable"); // 用css addClass设置同一个属性，是css生效，addClass不生效
-    // $(".foreground").addClass("no-select");
-    // $(".dragCustom2").attr("style", "-webkit-app-region: drag; background-color: pink; ");
-    // document.getElementById("aa").style.cssText = "-webkit-app-region: drag";
-    // 原生js设置-webkit-app-region也变成app-region
-    // 不过下面这个没有变
-    $(".dragCustom2").get(0).setAttribute("style", "-webkit-app-region: drag; background-color: pink; ");
-    // $(".dragCustom2").get(0).setAttribute("style", "-webkit-app-region: drag");
-
-    $(".dragCustom2").click(function () {
-      $(".dragCustom2").get(0).setAttribute("style", "-webkit-app-region: drag; background-color: red; ");
-    });
-
-    // 点一下任务栏，把窗口最小化，然后再点一下，恢复后，就可以拖拽了，说明这个要重载？ 或者触发什么消息？
-    // 切换tab也生效，这个是block hidden切换了，应该是这段dom重新加载了  滚动条滚动出去再回来，也生效。滚动只要有一部分区域不显示，就生效
-    //滚动条随便滚动一下就行了，但是点击内部的按钮，却没用，说明不是重绘事件，scroll要触发display？
-    // 是onblur事件？
-    // $(".dragCustom2").trigger("resize");
-    $(".dragCustom2").trigger("click");
-    $(".dragCustom2").trigger("scroll");
-    $(".dragCustom222").trigger("scroll");
-    $(document).trigger("scroll");
-    // $(body).trigger("scroll");
-    $(window).trigger("resize");
-    $(window).trigger("scroll");
-
-    //
-    //----------是因为有这个css代码，导致不能立即生效，注释掉就正常了
-    // button .button { -webkit-app-region: no-drag; // 按钮区域不允许拖拽，否则无法点击}
-
-    //  display: flex !important;
-    // $(".dragCustom2").css("display", "none");
-    // $(".dragCustom2").css("display", "none !important");
-    // $(".dragCustom2").css("display", "none");
-    // $(".dragCustom2").css("display", "block");
-
-    // $('.dragCustom2').attr('style','display:none !important');
-    // $(".dragCustom2").attr("style", "display:flex !important; -webkit-app-region: drag; background-color: pink; ");
-    $(".dragCustom2").css("cssText", "display:none !important");
-    $(".dragCustom2").css("cssText", "display:flex !important; -webkit-app-region: drag; background-color: pink; ");
-
-    console.log("------------------mouseenter ");
-    isEnter = true;
-    isLeave = false;
-  })
-  .mouseleave(function () {
-    console.log("------------------mouseleave ");
-    // $(".dragCustom2").css("-webkit-app-region", "no-drag");
-    isEnter = false;
-    isLeave = true;
-  })
-  .mouseover(function () {
-    // $(".dragCustom2").css("background-color", "red");
-    console.log("------------------mouseover ");
-  })
-  .mouseout(function (e) {
-    // e.currentTarget.style.backgroundColor ='blue';
-    // const target = e.target;
-    // switch (target.id) {
-    //   case "div1":
-    //     target.style.backgroundColor = "blue";
-    //     break;
-    //   case "div2":
-    //     target.style.backgroundColor = "green";
-    //     break;
-    //   case "div3":
-    //     target.style.backgroundColor = "red";
-    //     break;
-    // }
-    // console.log(target.id);
-    // console.log(target);
-
-    // let me2 = $(".dragCustom2").first(); // jQuery对象
-    let me = $(".dragCustom2").get(0); // dom对象
-    if (e.target == me) {
-      console.log("My event"); // mouseout 离开了父元素，进入了子元素
-      // $(".dragCustom2").css("background-color", "green");
-    } else {
-      console.log("Child event"); // mouseout 离开了子元素，进入了父元素
-      // $(".dragCustom2").css("background-color", "blue");
-    }
-
-    if (isLeave) {
-      // $(".dragCustom2").css("background-color", "lightgray");
-
-      console.log("isLeave mouseout ");
-      return true;
-    }
-    // $(".dragCustom2").css("background-color", "green");
-    console.log("------------------mouseout ");
-
-    // 如果鼠标在自己身上，不在子元素身上，则允许拖动
-  });
+//     // 如果鼠标在自己身上，不在子元素身上，则允许拖动
+//   });
 
 // // 窗口拖拽
 // let isDraging = false;
@@ -287,20 +271,20 @@ $(".dragCustom2")
 // }
 
 // $(document).mouseup(function (e) {
-//   // console.log("------------------document mouseup: ");
+//   console.log("------------------document mouseup: ");
 
 //   dragEnd();
 // });
 
 // $(document).mouseleave(function (e) {
-//   // console.log("------------------document mouseleave: ");
+//   console.log("------------------document mouseleave: ");
 
 //   dragEnd();
 // });
 
-// // $(document).mouseout(function (e) {
-// //   dragEnd();
-// // });
+// $(document).mouseout(function (e) {
+//   dragEnd();
+// });
 
 // $(".dragCustom").mouseup(function (e) {
 //   dragEnd();
