@@ -9459,6 +9459,12 @@ $primary-invert: $pink-invert;
 .no-dragable {
   -webkit-app-region: no-drag; }
 
+a,
+button, .button, .bulma-button-mixin, .button-no-background, .blk-no-background, .blk-btn-min,
+.blk-btn-max,
+.blk-btn-close, .blk-btn-restore {
+  -webkit-app-region: no-drag; }
+
 html,
 body {
   overflow: hidden; }

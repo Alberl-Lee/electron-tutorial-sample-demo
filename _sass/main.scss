@@ -55,11 +55,11 @@ $primary-invert: $pink-invert;
 }
 
 // 下面这种不太通用，比如progress、edit等其他控件忘记加进来，就无法响应了，得把所有需要响应的控件都加进来。而且如果后面有人新增控件类型，就会被坑，都不知道为什么不能响应
-// a,
-// button,
-// .button {
-//   -webkit-app-region: no-drag; // 按钮区域不允许拖拽，否则无法点击
-// }
+a,
+button,
+.button {
+  -webkit-app-region: no-drag; // 按钮区域不允许拖拽，否则无法点击
+}
 
 // // 可以反着来，规定所有的元素都是no-drag;  然后指定某些元素可以拖拽，就可以了
 // * {

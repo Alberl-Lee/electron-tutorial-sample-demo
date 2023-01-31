@@ -45,6 +45,7 @@ function showMenu(env) {
   return false;
 }
 
+
 // 当鼠标点击后关闭右键菜单
 document.onclick = function () {
   closeMenu();
@@ -555,6 +556,7 @@ $(".tabs>ul>li").click(function (e) {
 
 // JQuery UI现成的tabs。 但是跟bulma不兼容，内容是放到tabs里面，但bulma是跟tabs同级。所以这个tabs不能融合只能二选一，显然风格更重要，自己再用上面的js就行了
 // 把上面的bulma js代码改了，就可以跟JQuery UI兼容了 $(this).parents(".tabs").next().
+// 不过bulma的更合理，因为tab跟tabcontent平级，可以把它挤下去，两者不公用父元素分开之后，也更方便调整布局，一般tab是水平、content是垂直
 var tabs = $("#tabsJQueryUI").tabs();
 // tabs可拖拽
 var previouslyFocused = false;
