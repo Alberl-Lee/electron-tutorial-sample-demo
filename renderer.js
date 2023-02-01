@@ -21,11 +21,9 @@ if (isElectron()) {
   win = remote.getCurrentWindow();
 }
 
-console.log("hello world!");
-
-document.body.addEventListener("click", () => {
-  console.log("hello vscode!");
-});
+// document.body.addEventListener("click", () => {
+//   console.log("hello vscode!");
+// });
 
 // // 已在css文件设置
 // $("html").css({
