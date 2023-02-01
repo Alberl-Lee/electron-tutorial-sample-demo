@@ -39,6 +39,7 @@
     <!-- <script src="thirdparty/echarts/echarts.common.js"></script> -->
     <script src="thirdparty/echarts/echarts.js"></script>
     <script src="thirdparty/echarts/map/js/china.js"></script>
+    <script src="thirdparty/echarts/chart/echarts-wordcloud.js"></script>
 
     <script>
       if (window.module) module = window.module;
@@ -69,12 +70,12 @@
             <i class="fa-solid fa-minus"></i>
           </div>
         </button>
-        <button class="blk-btn-restore" tooltip="restore还原" placement="bottom-left">
+        <button class="blk-btn-restore" tooltip="restore还原" placement="bottom-right">
           <div>
             <i class="fa-regular fa-window-restore"></i>
           </div>
         </button>
-        <button class="blk-btn-max" tooltip="max最大化" placement="bottom-left">
+        <button class="blk-btn-max" tooltip="max最大化" placement="bottom-right">
           <div>
             <i class="fa-regular fa-window-maximize"></i>
           </div>
@@ -620,8 +621,12 @@
 
       <div class="tab-content tabScroll">
         <div class="level is-mobile">
-          <div id="chartPie" style="height: 350px; width: 400px"></div>
-          <div id="chartPressure" style="height: 350px; width: 350px"></div>
+          <div>
+            <div id="chartPie" style="height: 350px; width: 400px"></div>
+            <div id="chartPressure" style="height: 350px; width: 350px"></div>
+          </div>
+
+          <div id="chartWordCloud" class="pr-6" style="height: 780px; width: 700px"></div>
         </div>
 
         <div class="notification is-primary">

@@ -35,16 +35,23 @@ document.body.addEventListener("click", () => {
 function showMenu(env) {
   env.preventDefault(); // 禁止浏览器的默认菜单
   var e = env || window.event; // 兼容event事件
-  var menu = document.getElementById("global-menu");
   var x = e.clientX; // 获取鼠标的坐标
   var y = e.clientY;
-  menu.style.left = x + "px";
-  menu.style.top = y + "px";
-  menu.style.display = "block";
+  var menu = $("#global-menu");
+  var menuWidth = menu.width();
+  var menuHeight = menu.height();
 
+  if (x + menuWidth > window.innerWidth) {
+    x = e.clientX - menuWidth;
+  }
+
+  if (y + menuHeight > window.innerHeight) {
+    y = e.clientY - menuHeight;
+  }
+
+  menu.css({ left: x + "px", top: y + "px", display: "block" });
   return false;
 }
-
 
 // 当鼠标点击后关闭右键菜单
 document.onclick = function () {
