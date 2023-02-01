@@ -8,8 +8,11 @@
 
     <!-- 第三方CSS -->
     <link rel="stylesheet" type="text/css" href="thirdparty/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="thirdparty/fontawesome/css/all.css" />
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" /> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" />
+    <!-- <link rel="stylesheet" href="thirdparty/bulma/css/bulma.css" /> -->
+    <!-- 已经用了bulma.scss，就不用css了 -->
+
     <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-extensions.css" />
     <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-collapsible.min.css" />
     <link rel="stylesheet" href="thirdparty/bulma-extensions/bulma-badge.css" />
@@ -27,7 +30,7 @@
         module = undefined;
       }
     </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script> -->
+    <script src="thirdparty/vue.global.js"></script>
     <script src="thirdparty/jquery/jquery.js"></script>
     <script src="thirdparty/jquery-ui/jquery-ui.js"></script>
 
@@ -35,8 +38,6 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script> -->
     <script src="thirdparty/bulma-extensions/bulma-collapsible.min.js"></script>
     <script src="thirdparty/bulma-extensions/bulma-tagsinput.js"></script>
-    <!-- <script  src="thirdparty/echarts/echarts.js"></script> -->
-    <!-- <script src="thirdparty/echarts/echarts.common.js"></script> -->
     <script src="thirdparty/echarts/echarts.js"></script>
     <script src="thirdparty/echarts/map/js/china.js"></script>
     <script src="thirdparty/echarts/chart/echarts-wordcloud.js"></script>
@@ -85,6 +86,25 @@
             <i class="fa-solid fa-xmark"></i>
           </div>
         </button>
+      </div>
+    </div>
+
+    <div test="vue test">
+      <span id="vueText">{{ text }}</span>
+      <span id="btnCount">
+        <button @click="count++">click me : {{ count }}</button>
+      </span>
+
+      <div id="vueGroup">
+        <p>
+          <span :title="message"> Hover your mouse over me for a few seconds to see my dynamically bound title! </span>
+        </p>
+
+        <!-- 除了普通字符串之外，class 绑定还特别支持了对象和数组 -->
+        <p :class="{ red: isRed }" @click="toggleRed">This should be red... but click me to toggle it.</p>
+
+        <!-- 样式绑定也支持对象和数组 -->
+        <p :style="{ color }" @click="toggleColor">This should be green, and should toggle between green and blue on click.</p>
       </div>
     </div>
 

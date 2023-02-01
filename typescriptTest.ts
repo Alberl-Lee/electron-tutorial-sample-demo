@@ -12,3 +12,5 @@ Startup.main();
 document.body.addEventListener("click", () => {
   console.log("TypeScript!");
 });
+
+

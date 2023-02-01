@@ -709,6 +709,45 @@ $(".blk-btn-group button").click(function (e) {
   shellCache.openPath(mapGridBtn[id]);
 });
 
+// import { createApp } from 'vue'
+// text
+Vue.createApp({
+  data() {
+    return {
+      text: "Hello Vue3!",
+    };
+  },
+}).mount("#vueText");
+
+// btn
+const HelloVueApp = {
+  data() {
+    return {
+      count: 0,
+    };
+  },
+};
+
+Vue.createApp(HelloVueApp).mount("#btnCount");
+
+Vue.createApp({
+  data() {
+    return {
+      message: "Hello World!",
+      isRed: true,
+      color: "green",
+    };
+  },
+  methods: {
+    toggleRed() {
+      this.isRed = !this.isRed;
+    },
+    toggleColor() {
+      this.color = this.color === "green" ? "blue" : "green";
+    },
+  },
+}).mount("#vueGroup");
+
 // 3D 老虎SVG
 three3dTiger.init();
 
