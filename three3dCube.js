@@ -5,8 +5,8 @@ var three3dCube = {
   init: function () {
     init();
   },
-  animate: function () {
-    animate();
+  animate: function (bShow) {
+    animate(bShow);
   },
 };
 
@@ -183,9 +183,14 @@ function onWindowResize() {
   renderer.setSize(widthContainer, heigthContainer);
 }
 
-function animate() {
-  requestAnimationFrame(animate);
-  render();
+var idAnimate;
+function animate(bShow) {
+  if (bShow) {
+    idAnimate = requestAnimationFrame(animate);
+    render();
+  } else {
+    cancelAnimationFrame(idAnimate);
+  }
 }
 
 function render() {

@@ -5,9 +5,9 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
+import { three3dCube } from "./three3dCube.js";
+import { three3dTiger } from "./three3dTiger.js";
 
-// import { three3dCube } from "./three3dCube.js";
-// import { three3dTiger } from "./three3dTiger.js";
 // 如果不是浏览器环境，才用require
 function isElectron() {
   return window && window.process && window.process.type;
@@ -29,6 +29,12 @@ if (isElectron()) {
 // $("html").css({
 //   "overflow-y": "auto", // 自动隐藏垂直滚动条
 // });
+
+// body显示菜单，也可以指定任何元素
+// 由于我的global-menu菜单是放在第一个tab的，所以切换到其他tab就不显示了，这样也是相当于指定了只有第1个tab元素才能显示右键菜单
+document.body.addEventListener("contextmenu", (e) => {
+  showMenu(e);
+});
 
 function showMenu(env) {
   env.preventDefault(); // 禁止浏览器的默认菜单
@@ -748,9 +754,49 @@ Vue.createApp({
   },
 }).mount("#vueGroup");
 
+document.addEventListener("visibilitychange", function () {
+  let pageVisibility = document.visibilityState;
+  // 页面变为不可见时触发
+  if (pageVisibility == "hidden") {
+    console.log("离开时间点：" + new Date());
+  }
+  // 页面变为可见时触发
+  if (pageVisibility == "visible") {
+    console.log("重新进入时间点：" + new Date());
+  }
+});
+
+// $("#test_hidden").hideShow(function (e, visibility) {
+//   alert("Element hideShow " + visibility);
+//   console.log(e, visibility);
+// });
+
+$("#test_hidden").hideShow();
+$("#test_hidden").on("visibilityChanged", function (event, visibility) {
+  alert("Element visibilityChanged " + visibility);
+  console.log(visibility);
+});
+
+$("#toggle_visiblity").click(function () {
+  var visible = $("#test_hidden").is(":visible");
+  // console.log($("#test_hidden")["show"]())
+  $("#test_hidden")[visible ? "hide" : "show"]();
+});
+
 // 3D 老虎SVG
 three3dTiger.init();
-
-// 3D 正方体动画
 three3dCube.init();
-three3dCube.animate();
+
+$("#three3dTiger").hideShow();
+$("#three3dTiger").on("visibilityChanged", function (event, visibility) {
+  // if ("shown" == visibility) {
+  //   $("#three3dCube").show();
+  // } else {
+  //   $("#three3dCube").hide();
+  // }
+
+  // 3D 正方体动画
+  three3dCube.animate("shown" == visibility);
+
+  console.log(visibility);
+});

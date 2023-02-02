@@ -41,6 +41,7 @@
     <script src="thirdparty/echarts/echarts.js"></script>
     <script src="thirdparty/echarts/map/js/china.js"></script>
     <script src="thirdparty/echarts/chart/echarts-wordcloud.js"></script>
+    <script src="thirdparty/hideshow.js"></script>
 
     <script>
       if (window.module) module = window.module;
@@ -51,7 +52,7 @@
     <script src="./echartsDemo.js"></script>
     <!-- <title>Electron demo - by 中国Alberl</title> -->
   </head>
-  <body oncontextmenu="showMenu(event)">
+  <body>
     <!-- <div class="backgroundFullHeight dragable has-background-white-ter		"></div> -->
     <!-- <div class="dragCustom has-background-grey-lighter backgroundIndex"> -->
 
@@ -89,7 +90,14 @@
       </div>
     </div>
 
-    <div test="vue test">
+    <div test="show hide test" class="is-hidden">
+      <button type="button" id="toggle_visiblity">Hide / Show div</button>
+      <div id="test_hidden">
+        <h3>This div will fire hidden shown events.</h3>
+      </div>
+    </div>
+
+    <div test="vue test" class="is-hidden">
       <span id="vueText">{{ text }}</span>
       <span id="btnCount">
         <button @click="count++">click me : {{ count }}</button>
@@ -1405,8 +1413,8 @@
       </div>
     </div>
 
-    <script src="./renderer.js"></script>
-    <!-- <script type="module" src="./renderer.js"></script> -->
+    <!-- <script src="./renderer.js"></script> -->
+    <script type="module" src="./renderer.js"></script>
     <script src="./jsFromTS/typescriptTest.js"></script>
   </body>
 </html>

@@ -2,15 +2,15 @@
 
 class Startup {
   public static main(): number {
-    console.log("Hello TypeScript");
+    console.log("Hello TypeScript!");
     return 0;
   }
 }
 
 Startup.main();
 
-document.body.addEventListener("click", () => {
-  console.log("TypeScript!");
-});
+// document.body.addEventListener("click", () => {
+//   console.log("TypeScript!");
+// });
 
 
