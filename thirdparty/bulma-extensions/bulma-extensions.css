@@ -1569,9 +1569,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: inline-block;
-  position: absolute;
-  opacity: 0;
+  display: none;
 }
 .is-checkradio[type="checkbox"] + label,
 .is-checkradio[type="radio"] + label {
